@@ -1,6 +1,7 @@
 ---
 import "@styles/main.css";
 import { Font } from "astro:assets";
+const { title } = Astro.props;
 ---
 
 <html lang="en">
@@ -9,7 +10,7 @@ import { Font } from "astro:assets";
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
-    <title>DIN TITEL HER. MÅSKE SOM PROP?</title>
+    <title>{title}</title>
     <Font cssVariable="--font-cabin" preload />
     <Font cssVariable="--font-lato" preload />
     <style is:inline>
@@ -17,8 +18,72 @@ import { Font } from "astro:assets";
     </style>
   </head>
   <body>
+    <header>
+      <div>
+        <p>Ask<span>Experts</span></p>
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/case-studies">Case Studies</a></li>
+          <li><a href="/team">Team</a></li>
+          <li><a href="/about">About</a></li>
+        </ul>
+        <button>Login</button>
+      </div>
+    </header>
     <slot />
   </body>
 </html>
 
-<style></style>
+<style>
+  header {
+    background-color: var(--color-ui-primary);
+    padding-block: 1em;
+
+    div {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      column-gap: 1rem;
+      padding: 1em 2em;
+      align-items: center;
+
+      p {
+        font-weight: 600;
+        color: var(--color-on-ui-primary);
+        font-size: 1.5em;
+
+        span {
+          color: var(--color-action);
+        }
+      }
+
+      ul {
+        display: flex;
+        justify-content: space-between;
+        text-decoration: none;
+        list-style-type: none;
+        padding: 0;
+
+        li:not(:last-child) {
+          margin-right: 2em;
+        }
+
+        li {
+          a {
+            text-decoration: none;
+            color: var(--color-on-ui-primary);
+          }
+        }
+      }
+
+      button {
+        background-color: var(--color-on-ui-primary);
+        color: var(--color-text);
+        border-radius: 999px;
+        padding: 4px 16px;
+        border: none;
+        width: 94px;
+        justify-self: end;
+      }
+    }
+  }
+</style>
