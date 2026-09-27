@@ -1,0 +1,72 @@
+---
+import "@styles/main.css";
+---
+
+<section>
+  <div>
+    <p>STAY UPDATED</p>
+    <p>Subscribe Our Newsletter</p>
+    <p>Build stronger Customer Relationships with <span>Consultalk</span></p>
+    <form>
+      <input type="email" placeholder="your mail address" />
+      <button>Subscribe</button>
+    </form>
+  </div>
+</section>
+
+<style>
+  section {
+    background-color: var(--color-ui-primary);
+    border-bottom: 1px solid #2b3a58;
+
+    div {
+      padding: 3em 1em;
+
+      p {
+        color: var(--color-on-ui-primary);
+        margin-bottom: 0.5em;
+        text-align: center;
+
+        &:nth-child(1) {
+          color: var(--color-action);
+        }
+
+        &:nth-child(2) {
+          font-weight: 700;
+          font-size: 2rem;
+        }
+
+        &:nth-child(3) {
+          color: var(--color-text-weak);
+          font-size: 0.9rem;
+
+          span {
+            color: var(--color-action);
+          }
+        }
+      }
+
+      form {
+        display: flex;
+        justify-content: center;
+        gap: 0.5em;
+        margin-top: 2em;
+
+        input {
+          border: 1px solid #99a1af;
+          border-radius: 104px;
+          color: var(--color-text-weak);
+          padding: 1em 6em 1em 1em;
+          margin-right: 1em;
+        }
+
+        button {
+          padding: 1em 2.5em;
+          border-radius: 42px;
+          border: none;
+          background-color: var(--color-action);
+        }
+      }
+    }
+  }
+</style>
