@@ -14,7 +14,25 @@ const currentPath = Astro.url.pathname.replace(/\/$/, "") || "/";
 <header>
   <div>
     <p>Ask<span>Experts</span></p>
-    <ul>
+    <button
+      class="menu-toggle"
+      aria-expanded="false"
+      aria-controls="main-nav"
+      aria-label="Åbn menu"
+    >
+      <svg
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+      >
+        <path d="M4 6h16M4 12h16M4 18h16"></path>
+      </svg>
+    </button>
+    <ul id="main-nav">
       {
         links.map((link) => (
           <li>
@@ -28,9 +46,18 @@ const currentPath = Astro.url.pathname.replace(/\/$/, "") || "/";
         ))
       }
     </ul>
-    <button>Login</button>
+    <button class="login">Login</button>
   </div>
 </header>
+
+<script>
+  const toggle = document.querySelector(".menu-toggle");
+
+  toggle?.addEventListener("click", () => {
+    const isOpen = toggle.getAttribute("aria-expanded") === "true";
+    toggle.setAttribute("aria-expanded", String(!isOpen));
+  });
+</script>
 
 <style>
   header {
@@ -93,7 +120,7 @@ const currentPath = Astro.url.pathname.replace(/\/$/, "") || "/";
         }
       }
 
-      button {
+      .login {
         background-color: var(--color-on-ui-primary);
         color: var(--color-text);
         border-radius: 999px;
@@ -101,6 +128,50 @@ const currentPath = Astro.url.pathname.replace(/\/$/, "") || "/";
         border: none;
         width: 94px;
         justify-self: end;
+      }
+
+      .menu-toggle {
+        display: none;
+        background: none;
+        border: none;
+        color: var(--color-on-ui-primary);
+        cursor: pointer;
+        justify-self: end;
+      }
+
+      @media (max-width: 600px) {
+        grid-template-columns: 1fr auto;
+        row-gap: 1rem;
+
+        .menu-toggle {
+          display: block;
+        }
+
+        ul,
+        .login {
+          display: none;
+          grid-column: 1 / -1;
+        }
+
+        ul li:not(:last-child) {
+          margin-right: 0;
+        }
+
+        &:has(.menu-toggle[aria-expanded="true"]) {
+          ul {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            border-top: 1px solid #2b3a58;
+            padding-top: 1rem;
+            margin: 0;
+          }
+
+          .login {
+            display: block;
+            justify-self: start;
+          }
+        }
       }
     }
   }
