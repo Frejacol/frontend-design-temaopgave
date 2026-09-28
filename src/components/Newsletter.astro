@@ -67,6 +67,20 @@ import "@styles/main.css";
           background-color: var(--color-action);
         }
       }
+      @media (max-width: 600px) {
+        form {
+          flex-direction: column;
+          width: 80%;
+          max-width: 16rem;
+          margin-inline: auto;
+        }
+
+        input,
+        button {
+          padding: 0.75em 1em;
+          font-size: 0.9rem;
+        }
+      }
     }
   }
 </style>
