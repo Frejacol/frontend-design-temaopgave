@@ -15,83 +15,85 @@ import "@styles/main.css";
 </section>
 
 <style>
-  section {
-    background-color: var(--color-ui-primary);
-    border-bottom: 1px solid #2b3a58;
+  @layer components {
+    section {
+      background-color: var(--color-ui-primary);
+      border-bottom: 1px solid #2b3a58;
 
-    div {
-      padding: 3em 1em;
+      div {
+        padding: 3em 1em;
 
-      p {
-        color: var(--color-on-ui-primary);
-        margin-bottom: 0.5em;
-        text-align: center;
+        p {
+          color: var(--color-on-ui-primary);
+          margin-bottom: 0.5em;
+          text-align: center;
 
-        &:nth-child(1) {
-          color: var(--color-action);
-        }
-
-        &:nth-child(2) {
-          font-weight: 700;
-          font-size: 2rem;
-        }
-
-        &:nth-child(3) {
-          color: var(--color-text-weak);
-          font-size: 0.9rem;
-
-          span {
+          &:nth-child(1) {
             color: var(--color-action);
           }
-        }
-      }
 
-      form {
-        display: flex;
-        justify-content: center;
-        gap: 0.5em;
-        margin-top: 2em;
+          &:nth-child(2) {
+            font-weight: 700;
+            font-size: 2rem;
+          }
 
-        input {
-          border: 1px solid #99a1af;
-          border-radius: 104px;
-          color: var(--color-text-weak);
-          padding: 1em 6em 1em 1em;
-          margin-right: 1em;
-        }
+          &:nth-child(3) {
+            color: var(--color-text-weak);
+            font-size: 0.9rem;
 
-        button {
-          padding: 1em 2.5em;
-          border-radius: 42px;
-          border: none;
-          background-color: var(--color-action);
-        }
-      }
-      @media (max-width: 600px) {
-        section {
-          div {
-            p {
-              &:nth-child(2) {
-                font-size: 1.5rem;
-              }
+            span {
+              color: var(--color-action);
             }
           }
         }
 
         form {
-          flex-direction: column;
-          width: 80%;
-          max-width: 16rem;
-          margin-inline: auto;
-
-          input,
-          button {
-            padding: 0.75em 1em;
-            font-size: 0.9rem;
-          }
+          display: flex;
+          justify-content: center;
+          gap: 0.5em;
+          margin-top: 2em;
 
           input {
-            margin-right: 0;
+            border: 1px solid #99a1af;
+            border-radius: 104px;
+            color: var(--color-text-weak);
+            padding: 1em 6em 1em 1em;
+            margin-right: 1em;
+          }
+
+          button {
+            padding: 1em 2.5em;
+            border-radius: 42px;
+            border: none;
+            background-color: var(--color-action);
+          }
+        }
+        @media (max-width: 600px) {
+          section {
+            div {
+              p {
+                &:nth-child(2) {
+                  font-size: 1.5rem;
+                }
+              }
+            }
+          }
+
+          form {
+            flex-direction: column;
+            width: 80%;
+            max-width: 16rem;
+            margin-inline: auto;
+
+            input,
+            button {
+              padding: 0.75em 1em;
+              font-size: 0.9rem;
+            }
+
+            input {
+              margin-right: 0;
+            }
           }
         }
       }
