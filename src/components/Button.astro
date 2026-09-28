@@ -1,0 +1,30 @@
+---
+const { variant } = Astro.props;
+const { text } = Astro.props;
+---
+
+<a href="#" class={variant}>{text}</a>
+
+<style>
+  @layer components {
+    a {
+      border-radius: 42px;
+      padding: 0.55rem 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      border: none;
+      font: inherit; /*eller font-family: Lato;? */
+      text-decoration: none;
+    }
+
+    .default {
+      background: var(--color-ui-primary);
+      color: #f9fafb;
+    }
+
+    .accent {
+      background: var(--color-action);
+      color: var(--color-ui-primary);
+    }
+  }
+</style>
