@@ -1,0 +1,74 @@
+---
+const { figText } = Astro.props;
+const { figNumber } = Astro.props;
+---
+
+<figure data-value={figNumber}>
+  <svg viewBox="0 0 100 100">
+    <circle class="track"></circle>
+    <circle class="progress" pathLength="100"></circle>
+    <circle class="marker" pathLength="100" r="4" fill="black"></circle>
+  </svg>
+  <figcaption>{figText}</figcaption>
+</figure>
+
+<style>
+  figure {
+    flex: 0 0 200px;
+    min-inline-size: 0;
+    text-align: center;
+
+    --value: attr(data-value type(<number>));
+    --value-string: attr(data-value);
+    --value-percent: attr(data-value %);
+
+    display: grid;
+    grid: "stack";
+    place-items: center;
+  }
+
+  figure::after {
+    content: var(--value-string) "%";
+    grid-area: stack;
+    font-size: 30cqw;
+    font-weight: 700;
+  }
+
+  svg {
+    outline: 1px dashed #daae3c;
+    rotate: -90deg;
+    grid-area: stack;
+    overflow: visible;
+  }
+
+  .track {
+    stroke: #daae3c;
+  }
+
+  .track,
+  .progress {
+    cx: 50;
+    cy: 50;
+    r: 46;
+    fill: none;
+    stroke-width: 4;
+  }
+
+  .progress {
+    stroke: #ae4d4d;
+    stroke-linecap: round;
+    stroke-dasharray: 100;
+    stroke-dashoffset: calc(100 - var(--value));
+  }
+
+  .marker {
+    visibility: visible;
+    stroke: rgb(19, 16, 16);
+    offset-path: circle(46px at 50px 50px);
+    offset-distance: var(--value-percent);
+  }
+
+  figcaption {
+    margin-block-start: 0.75rem;
+  }
+</style>

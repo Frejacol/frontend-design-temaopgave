@@ -31,10 +31,18 @@
   --color-text-weak: var(--color-neutrals-400);
   --color-surface-highlight: var(--color-yellow-600);
   --color-on-ui-primary-muted: var(--color-neutrals-400);
+
+  /* ==== Spacing ==== */
+
+  /* ==== Typography ==== */
+  --typo-title: 
+
+  /* ==== Border Radii ==== */ --border-popover-button:
+    border-radius: 999px;
+  --border-button: border-radius: 42px;
+  --border-img: border-radius: 30px;
+  --border-card-faq: border-radius: 30px;
+  --border-card-live-preview: border-radius: 30px;
+  --border-card: border-radius: 20px;
+  --border-graphic: border-radius: 20px;
 }
-
-/* ==== Spacing ==== */
-
-/* ==== Typography ==== */
-
-/* ==== Border Radii ==== */
