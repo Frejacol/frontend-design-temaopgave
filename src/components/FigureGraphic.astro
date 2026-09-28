@@ -8,56 +8,58 @@ const { variant } = Astro.props;
 </figure>
 
 <style>
-  figure {
-    position: relative;
-    isolation: isolate;
-    max-width: 60%;
-    justify-self: center;
+  @layer components {
+    figure {
+      position: relative;
+      isolation: isolate;
+      max-width: 60%;
+      justify-self: center;
 
-    --square-width: 120px;
-    --square-height: 100px;
-    --square-offset: -2rem;
+      --square-width: 120px;
+      --square-height: 100px;
+      --square-offset: -2rem;
 
-    img {
-      border-radius: var(--border-img);
-    }
+      img {
+        border-radius: var(--border-img);
+      }
 
-    &:is(.topLeft, .topRight, .bottomLeft, .topLeftLong)::before {
-      content: "";
-      position: absolute;
-      width: var(--square-width);
-      height: var(--square-height);
-      background: var(--color-ui-secondary);
-      z-index: -1;
-      border-radius: var(--border-graphic);
-    }
+      &:is(.topLeft, .topRight, .bottomLeft, .topLeftLong)::before {
+        content: "";
+        position: absolute;
+        width: var(--square-width);
+        height: var(--square-height);
+        background: var(--color-ui-secondary);
+        z-index: -1;
+        border-radius: var(--border-graphic);
+      }
 
-    &.bottomLeft::before {
-      --square-width: 307px;
-      --square-height: 164px;
-      bottom: var(--square-offset);
-      left: var(--square-offset);
-    }
+      &.bottomLeft::before {
+        --square-width: 307px;
+        --square-height: 164px;
+        bottom: var(--square-offset);
+        left: var(--square-offset);
+      }
 
-    &.topLeft::before {
-      --square-width: 183px;
-      --square-height: 164px;
-      top: var(--square-offset);
-      left: var(--square-offset);
-    }
+      &.topLeft::before {
+        --square-width: 183px;
+        --square-height: 164px;
+        top: var(--square-offset);
+        left: var(--square-offset);
+      }
 
-    &.topRight::before {
-      --square-width: 233px;
-      --square-height: 164px;
-      top: var(--square-offset);
-      right: var(--square-offset);
-    }
+      &.topRight::before {
+        --square-width: 233px;
+        --square-height: 164px;
+        top: var(--square-offset);
+        right: var(--square-offset);
+      }
 
-    &.topLeftLong::before {
-      --square-width: 233px;
-      --square-height: 164px;
-      top: var(--square-offset);
-      left: var(--square-offset);
+      &.topLeftLong::before {
+        --square-width: 233px;
+        --square-height: 164px;
+        top: var(--square-offset);
+        left: var(--square-offset);
+      }
     }
   }
 </style>
