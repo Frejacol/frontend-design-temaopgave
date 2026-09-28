@@ -33,16 +33,48 @@
   --color-on-ui-primary-muted: var(--color-neutrals-400);
 
   /* ==== Spacing ==== */
+  /* PRIMITIVES */
+  --space-0: 0;
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 3rem;
+  --space-8: 4rem;
+  --space-9: 6rem;
+  --space-10: 8rem;
+
+  /* TOKENS */
+  --space-inline-tight: var(--space-2);
+  --space-stack-s: var(--space-3);
+  --space-stack-m: var(--space-5);
+  --space-card-padding: var(--space-5);
+  --space-button-padding-block: var(--space-3);
+  --space-button-padding-inline: var(--space-6);
+  --space-section: var(--space-9);
+  --space-gutter: var(--space-5);
 
   /* ==== Typography ==== */
-  --typo-title: 
+  --text-size-xs: 0.9rem;
+  --text-size-s: 1rem;
+  --text-size-m: 1.5rem;
+  --text-size-l: 2rem;
+  --text-size-xl: 2.5rem;
 
-  /* ==== Border Radii ==== */ --border-popover-button:
-    border-radius: 999px;
-  --border-button: border-radius: 42px;
-  --border-img: border-radius: 30px;
-  --border-card-faq: border-radius: 30px;
-  --border-card-live-preview: border-radius: 30px;
-  --border-card: border-radius: 20px;
-  --border-graphic: border-radius: 20px;
+  --text-xtra-light: 400;
+  --text-light: 500;
+  --text-medium: 600;
+  --text-bold: 700;
+  --text-xtra-bold: 800;
+
+  /* ==== Border Radii ==== */
+  --border-popover-button: 999px;
+  --border-button: 42px;
+  --border-img: 30px;
+  --border-card-faq: 30px;
+  --border-card-live-preview: 30px;
+  --border-card: 20px;
+  --border-graphic: 20px;
 }
