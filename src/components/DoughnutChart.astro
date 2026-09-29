@@ -14,9 +14,10 @@ const { figNumber } = Astro.props;
 
 <style>
   figure {
-    flex: 0 0 200px;
+    flex: 0 1 200px;
     min-inline-size: 0;
     text-align: center;
+    container: stat / inline-size;
 
     --value: attr(data-value type(<number>));
     --value-string: attr(data-value);
@@ -25,6 +26,7 @@ const { figNumber } = Astro.props;
     display: grid;
     grid: "stack";
     place-items: center;
+    font-family: var(--font-cabin);
   }
 
   figure::after {
@@ -35,10 +37,12 @@ const { figNumber } = Astro.props;
   }
 
   svg {
-    outline: 1px dashed #daae3c;
     rotate: -90deg;
     grid-area: stack;
     overflow: visible;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1;
   }
 
   .track {
@@ -51,11 +55,11 @@ const { figNumber } = Astro.props;
     cy: 50;
     r: 46;
     fill: none;
-    stroke-width: 4;
+    stroke-width: 5;
   }
 
   .progress {
-    stroke: #ae4d4d;
+    stroke: var(--color-surface-primary);
     stroke-linecap: round;
     stroke-dasharray: 100;
     stroke-dashoffset: calc(100 - var(--value));
@@ -63,7 +67,7 @@ const { figNumber } = Astro.props;
 
   .marker {
     visibility: visible;
-    stroke: rgb(19, 16, 16);
+    stroke: var(--color-surface-primary);
     offset-path: circle(46px at 50px 50px);
     offset-distance: var(--value-percent);
   }

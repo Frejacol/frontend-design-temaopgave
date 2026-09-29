@@ -1,0 +1,19 @@
+---
+import DoughnutChart from "../components/DoughnutChart.astro";
+---
+
+<section class="doughnutSection">
+  <DoughnutChart figNumber="85" figText="Consistency" />
+  <DoughnutChart figNumber="95" figText="Improvement" />
+  <DoughnutChart figNumber="90" figText="Branching" />
+</section>
+
+<style>
+  section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+    background-color: var(--color-surface-highlight);
+  }
+</style>
