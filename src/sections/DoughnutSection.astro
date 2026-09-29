@@ -1,0 +1,27 @@
+---
+import DoughnutChart from "../components/DoughnutChart.astro";
+import Section from "@components/Section.astro";
+import { getExperience } from "@lib/api";
+const data = await getExperience();
+const { title, eyebrow, subtitle, stats } = data;
+---
+
+<Section theme="yellow">
+  <h2>{title}</h2>
+  <div class="chart-grid">
+    {
+      stats.map((stat: any) => (
+        <DoughnutChart figNumber={stat.value} figText={stat.label} />
+      ))
+    }
+  </div>
+</Section>
+
+<style>
+  .chart-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+  }
+</style>

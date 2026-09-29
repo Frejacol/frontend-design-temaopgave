@@ -1,0 +1,15 @@
+---
+const { theme, variant } = Astro.props;
+---
+
+<section data-theme={theme} class={variant}><div><slot /></div></section>
+
+<style>
+  [data-theme] {
+    background: var(--bg-theme);
+  }
+
+  [data-theme="yellow"] {
+    --bg-theme: var(--color-surface-highlight);
+  }
+</style>

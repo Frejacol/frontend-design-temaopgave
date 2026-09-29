@@ -32,7 +32,7 @@ const { figNumber } = Astro.props;
   figure::after {
     content: var(--value-string) "%";
     grid-area: stack;
-    font-size: 30cqw;
+    font-size: var(--text-size-xxxl);
     font-weight: 700;
   }
 
@@ -74,5 +74,6 @@ const { figNumber } = Astro.props;
 
   figcaption {
     margin-block-start: 0.75rem;
+    font-size: var(--text-size-m);
   }
 </style>

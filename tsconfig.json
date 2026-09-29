@@ -11,7 +11,8 @@
       "@layouts/*": ["./src/layouts/*"],
       "@icons/*": ["./src/icons/*"],
       "@helpers/*": ["./src/components/helpers/*"],
-      "@styles/*": ["./src/styles/*"]
+      "@styles/*": ["./src/styles/*"],
+      "@sections/*": ["./src/sections/*"]
     }
   }
 }
