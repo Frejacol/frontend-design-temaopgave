@@ -10,6 +10,29 @@ h3 {
   font-family: var(--font-cabin);
 }
 
+h1 {
+  font-size: var(--text-size-xxxl);
+}
+
+h2 {
+  font-size: var(--text-size-xxl);
+}
+
+h3 {
+  font-size: var(--text-size-xl);
+}
+
+h4 {
+  font-size: var(--text-size-l);
+}
+
+h5 {
+  font-size: var(--text-size-m);
+  margin: 0;
+}
+
+p {
+  font-size: var(--text-size-s);
 body {
   display: grid;
   grid-template-columns:

@@ -3,7 +3,7 @@ import { Image } from "astro:assets";
 import Services from "./Services.astro";
 import CEOImage from "@assets/images/ceo.webp";
 import Button from "../components/Button.astro";
-import arrow from "../icons/arrow--right.svg";
+import Arrow from "../icons/arrow--right.svg";
 ---
 
 <section class="hero">
@@ -16,9 +16,7 @@ import arrow from "../icons/arrow--right.svg";
     </p>
 
     <Button variant="accent"> Book a meeting </Button>
-    <Button variant="default"
-      >Learn more <img src={arrow.src} alt="icon-of-arrow" /></Button
-    >
+    <Button variant="default">Learn more <Arrow class="arrow" /></Button>
   </div>
 
   <Image src={CEOImage} alt="CEO" />
@@ -27,11 +25,16 @@ import arrow from "../icons/arrow--right.svg";
 </section>
 
 <style>
-  /* Styles her */
   @layer components {
     .hero {
       background-color: #f3f4f6;
       padding: 2rem;
+    }
+
+    .arrow {
+      color: #f3f4f6;
+      width: 1rem;
+      height: 0.8rem;
     }
 
     /* mønster til baggrund ved siden af hero billede 
