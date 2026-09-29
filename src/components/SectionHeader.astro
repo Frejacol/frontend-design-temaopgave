@@ -18,14 +18,17 @@ const { eyebrowText, title, subtitle } = Astro.props;
     .eyebrow {
       text-transform: uppercase;
       font-weight: var(--text-xtra-light);
+      text-box: trim-both cap alphabetic;
     }
 
     h2 {
       font-weight: var(--text-bold);
+      text-transform: capitalize;
     }
 
     .sub {
       font-weight: var(--text-xtra-light);
+      color: var(--color-text-muted);
     }
   }
 </style>
