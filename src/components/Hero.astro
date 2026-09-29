@@ -2,6 +2,8 @@
 import { Image } from "astro:assets";
 import Services from "./Services.astro";
 import CEOImage from "@assets/images/ceo.webp";
+import Button from "../components/Button.astro";
+import arrow from "../icons/arrow--right.svg";
 ---
 
 <section class="hero">
@@ -12,9 +14,13 @@ import CEOImage from "@assets/images/ceo.webp";
       the next level. Let us help you navigate challenges and achieve
       sustainable success.
     </p>
-    <a href="#0">Book a Meeting</a>
-    <a href="#0">Learn More</a>
+
+    <Button variant="accent"> Book a meeting </Button>
+    <Button variant="default"
+      >Learn more <img src={arrow.src} alt="icon-of-arrow" /></Button
+    >
   </div>
+
   <Image src={CEOImage} alt="CEO" />
 
   <Services />
@@ -27,5 +33,20 @@ import CEOImage from "@assets/images/ceo.webp";
       background-color: #f3f4f6;
       padding: 2rem;
     }
+
+    /* mønster til baggrund ved siden af hero billede 
+    .pattern {
+      --pattern-color: #ffcc4a;
+
+      background:
+        radial-gradient(ellipse farthest-side at 65% 35%, #0000, #000),
+        conic-gradient(
+            from 180deg at 1px 1px,
+            alpha(from var(--pattern-color) / 0.35) 75%,
+            #0000 0
+          ) -1px -1px /
+          80px 80px,
+        #000;
+    }*/
   }
 </style>

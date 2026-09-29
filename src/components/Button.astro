@@ -1,25 +1,28 @@
 ---
 const { variant } = Astro.props;
-const { text } = Astro.props;
 ---
 
-<a href="#" class={variant}>{text}</a>
+<a href="#" class={variant}><slot /></a>
 
 <style>
   @layer components {
     a {
+      display: inline-flex;
+      align-items: center;
+      gap: 1rem;
       border-radius: 42px;
-      padding: 0.55rem 0.9rem;
-      font-weight: 600;
+      padding: 1rem 1.9rem;
       cursor: pointer;
       border: none;
-      font: inherit; /*eller font-family: Lato;? */
+      font: inherit;
+      font-weight: var(--text-medium);
       text-decoration: none;
     }
 
     .default {
       background: var(--color-ui-primary);
-      color: #f9fafb;
+      color: var(--color-surface-primary);
+      border: 1px solid rgba(255, 255, 255, 0.5);
     }
 
     .accent {

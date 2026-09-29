@@ -1,5 +1,8 @@
 ---
+import { getTeamMembers } from "@lib/api";
 import Layout from "@layouts/Layout.astro";
+const team = await getTeamMembers();
+console.log(team);
 ---
 
 <Layout>
