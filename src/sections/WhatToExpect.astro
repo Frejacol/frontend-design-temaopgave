@@ -1,0 +1,71 @@
+---
+import "@styles/main.css";
+import SectionHeader from "@components/SectionHeader.astro";
+import Section from "@components/Section.astro";
+import FigureGraphic from "@components/FigureGraphic.astro";
+import { Image } from "astro:assets";
+import WhatToExpectImage from "@assets/images/WhatToExpect.jpg";
+import CheckIcon from "@icons/checkmark.svg";
+---
+
+<Section>
+  <div class="grid">
+    <FigureGraphic variant="topLeft">
+      <Image src={WhatToExpectImage} alt="" />
+    </FigureGraphic>
+    <div>
+      <SectionHeader
+        eyebrowText="We'll work with you"
+        title="What to expect"
+        subtitle="Our collaboration is built on transparency, efficiency, and measurable results. Together, we create strategies tailored to your unique needs and goals."
+      />
+      <ul class="checklist">
+        <li>
+          <CheckIcon class="check-icon" />
+          <span
+            >Collaborate to build actionable strategies that drive sustainable
+            growth and deliver tangible outcomes.</span
+          >
+        </li>
+        <li>
+          <CheckIcon class="check-icon" />
+          <span
+            >Identify opportunities to optimize processes and implement
+            impactful solutions with measurable results.</span
+          >
+        </li>
+      </ul>
+    </div>
+  </div>
+</Section>
+
+<style>
+  @layer components {
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-8);
+    }
+
+    .checklist {
+      list-style: none;
+      padding: 0;
+      display: grid;
+      gap: 1.5rem;
+
+      li {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        column-gap: 1rem;
+        align-items: start;
+      }
+
+      .check-icon {
+        width: 1.5rem;
+        height: 1.5rem;
+        color: var(--color-ui-secondary-alternative);
+        margin-top: 0.1em;
+      }
+    }
+  }
+</style>
