@@ -48,11 +48,7 @@ const { caseName, category, date, image, buttonLabel } = caseStudy.caseDetails;
       {
         caseStudy.sections.map((section, index) => (
           <>
-            {index === 0 ? (
-              <h2>{section.title}</h2>
-            ) : (
-              <h3>{section.title}</h3>
-            )}
+            {index === 0 ? <h2>{section.title}</h2> : <h3>{section.title}</h3>}
 
             {Array.isArray(section.content) ? (
               <>
@@ -90,4 +86,20 @@ const { caseName, category, date, image, buttonLabel } = caseStudy.caseDetails;
   </article>
 </Layout>
 
-<style></style>
+<style>
+  body {
+    display: grid;
+    grid-template-columns:
+      [full-start] 1fr [content] minmax(0, 1200px)
+      1fr [full-end];
+
+    article {
+      display: grid;
+      grid-template-columns: subgrid;
+      grid-column: full;
+      > :not(&) {
+        grid-column: content;
+      }
+    }
+  }
+</style>
