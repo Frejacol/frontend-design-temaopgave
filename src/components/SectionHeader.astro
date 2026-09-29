@@ -1,0 +1,31 @@
+---
+import "@styles/main.css";
+const { eyebrowText, title, subtitle } = Astro.props;
+---
+
+<div>
+  <p class="eyebrow">{eyebrowText}</p>
+  <h2>{title}</h2>
+  <p class="sub">{subtitle}</p>
+</div>
+
+<style>
+  div {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+
+    .eyebrow {
+      text-transform: uppercase;
+      font-weight: var(--text-xtra-light);
+    }
+
+    h2 {
+      font-weight: var(--text-bold);
+    }
+
+    .sub {
+      font-weight: var(--text-xtra-light);
+    }
+  }
+</style>
