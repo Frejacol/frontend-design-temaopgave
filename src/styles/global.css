@@ -33,6 +33,8 @@ h5 {
 
 p {
   font-size: var(--text-size-s);
+}
+
 body {
   display: grid;
   grid-template-columns:
