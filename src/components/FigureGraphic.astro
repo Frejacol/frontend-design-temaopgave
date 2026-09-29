@@ -16,7 +16,8 @@ const { variant } = Astro.props;
 
       --square-width: 120px;
       --square-height: 100px;
-      --square-offset: -2rem;
+      --square-offset-x: -2rem;
+      --square-offset-y: -2rem;
 
       img {
         border-radius: var(--border-img);
@@ -33,31 +34,32 @@ const { variant } = Astro.props;
       }
 
       &.bottomLeft::before {
-        --square-width: 307px;
+        --square-width: 285px;
         --square-height: 164px;
-        bottom: var(--square-offset);
-        left: var(--square-offset);
+        --square-offset-x: -65px;
+        bottom: var(--square-offset-y);
+        left: var(--square-offset-x);
       }
 
       &.topLeft::before {
         --square-width: 183px;
         --square-height: 164px;
-        top: var(--square-offset);
-        left: var(--square-offset);
+        top: var(--square-offset-y);
+        left: var(--square-offset-x);
       }
 
       &.topRight::before {
         --square-width: 233px;
         --square-height: 164px;
-        top: var(--square-offset);
-        right: var(--square-offset);
+        top: var(--square-offset-y);
+        right: var(--square-offset-x);
       }
 
       &.topLeftLong::before {
         --square-width: 233px;
         --square-height: 164px;
-        top: var(--square-offset);
-        left: var(--square-offset);
+        top: var(--square-offset-y);
+        left: var(--square-offset-x);
       }
     }
   }
