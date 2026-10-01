@@ -1,0 +1,60 @@
+---
+const stats = [
+  { number: "1128+", label: "Successful Work" },
+  { number: "908+", label: "Team member" },
+  { number: "258+", label: "Happy Customers" },
+  { number: "564+", label: "Creative Idea" },
+];
+---
+
+<div>
+  <ul class="stats">
+    {
+      stats.map((stat) => (
+        <li>
+          <p class="number">{stat.number}</p>
+          <p class="label">{stat.label}</p>
+        </li>
+      ))
+    }
+  </ul>
+</div>
+
+<style>
+  div {
+    margin-top: var(--space-9);
+  }
+  .stats {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-6);
+    text-align: center;
+
+    .number {
+      font-family: var(--font-cabin);
+      font-weight: 700;
+      font-size: 3rem;
+      line-height: 1;
+      color: var(--color-text);
+      margin: 0;
+    }
+
+    .label {
+      font-family: var(--font-cabin);
+      color: var(--color-text-muted);
+      margin-top: var(--space-3);
+    }
+
+    @media (max-width: 600px) {
+      grid-template-columns: repeat(2, 1fr);
+      row-gap: var(--space-8);
+
+      .number {
+        font-size: 2.25rem;
+      }
+    }
+  }
+</style>
