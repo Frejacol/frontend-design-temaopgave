@@ -1,0 +1,32 @@
+---
+import "@styles/main.css";
+import { Image } from "astro:assets";
+const { icon, title, description } = Astro.props;
+---
+
+<div class="card">
+  <Image src={icon} alt={icon} />
+  <h5>{title}</h5>
+  <p>{description}</p>
+</div>
+
+<style>
+  .card {
+    background-color: var(--color-surface-tertiary);
+    border-radius: var(--border-card);
+    padding: 44px 35px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-3);
+
+    img {
+      width: 20%;
+      height: auto;
+    }
+
+    p {
+      color: var(--color-text-muted);
+    }
+  }
+</style>
