@@ -1,0 +1,84 @@
+---
+import "@styles/main.css";
+import SectionHeader from "@components/SectionHeader.astro";
+import Section from "@components/Section.astro";
+import FigureGraphic from "@components/FigureGraphic.astro";
+import { Image } from "astro:assets";
+import OurVisionImage from "@assets/images/OurVision.jpg";
+import CheckIcon from "@icons/checkmark.svg";
+---
+
+<Section>
+  <div class="grid">
+    <div>
+      <SectionHeader
+        eyebrowText="OUR VISION"
+        title="Turn your ideas into reality."
+        subtitle="Capitalize on low hanging fruit to identify a ballpark value added activity beta test. Override the digital divide with additional from DevOps."
+      />
+      <ul class="checklist">
+        <li>
+          <CheckIcon class="check-icon" />
+          <span
+            >Bring to the table win-win survival strategies to ensure proactive
+            domination. At the end of the day.</span
+          >
+        </li>
+        <li>
+          <CheckIcon class="check-icon" />
+          <span
+            >Capitalize on low hanging fruit to identify a ballpark value added
+            activity to beta test override the digital.</span
+          >
+        </li>
+      </ul>
+    </div>
+    <FigureGraphic variant="topRight">
+      <Image src={OurVisionImage} alt="" />
+    </FigureGraphic>
+  </div>
+</Section>
+
+<style>
+  @layer components {
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-8);
+
+      @media (max-width: 600px) {
+        grid-template-columns: 1fr;
+
+        --square-width: 45%;
+        --square-height: 55%;
+        --square-offset-x: -1rem;
+        --square-offset-y: -1rem;
+
+        > :global(figure) {
+          order: 2;
+        }
+      }
+    }
+
+    .checklist {
+      list-style: none;
+      padding: 0;
+      display: grid;
+      gap: 1.5rem;
+
+      li {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        column-gap: 1rem;
+        align-items: start;
+      }
+
+      .check-icon {
+        width: 1.5rem;
+        height: 1.5rem;
+        color: var(--color-ui-secondary-alternative);
+        margin-top: 0.1em;
+      }
+    }
+  }
+</style>
