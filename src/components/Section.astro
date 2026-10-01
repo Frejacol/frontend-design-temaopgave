@@ -20,7 +20,33 @@ const { theme, variant, fullChild } = Astro.props;
   }
   [data-theme="grey"] {
     --bg-theme: var(--color-surface-secondary);
+    .button {
+      background-color: var(--color-ui-primary);
+      color: var(--color-surface-secondary);
+    }
   }
+
+  [data-theme="dark"] {
+    --bg-theme: var(--color-surface-highlight);
+    --pattern-color: #ffcc4a;
+    background:
+      radial-gradient(ellipse farthest-side at 65% 35%, #0000, #000),
+      conic-gradient(
+          from 180deg at 1px 1px,
+          alpha(from var(--pattern-color) / 0.35) 75%,
+          #0000 0
+        ) -1px -1px /
+        80px 80px,
+      #000;
+    color: var(--color-surface-secondary);
+    :global(.sub) {
+      color: var(--color-surface-secondary);
+    }
+    :global(.cards) {
+      color: var(--color-text);
+    }
+  }
+
   section {
     padding-block: var(--space-10);
   }

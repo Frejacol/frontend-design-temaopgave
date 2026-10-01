@@ -1,18 +1,27 @@
 ---
 import DynamicIcon from "./helpers/DynamicIcon.astro";
-const { icon, title, description, link, linkText } = Astro.props;
+import ArrowRight from "@icons/arrow--right.svg";
+const { icon, title, description, link, linkText, variant, circleIcon } =
+  Astro.props;
 ---
 
-<div class="card">
-  <DynamicIcon name={icon} />
+<div class={variant}>
+  <span class:list={["icon", { circle: circleIcon }]}>
+    <DynamicIcon name={icon} />
+  </span>
   <h5>{title}</h5>
   <p>{description}</p>
-  <a href={link}>{linkText}</a>
+  {
+    link && (
+      <a href={link}>
+        {linkText} <ArrowRight class="arrow" aria-hidden="true" />
+      </a>
+    )
+  }
 </div>
 
 <style>
-  .card {
-    background-color: var(--color-surface-tertiary);
+  div {
     border-radius: var(--border-card);
     padding: 44px 35px;
     display: flex;
@@ -27,6 +36,49 @@ const { icon, title, description, link, linkText } = Astro.props;
 
     p {
       color: var(--color-text-muted);
+    }
+
+    &.grey {
+      background-color: var(--color-surface-tertiary);
+    }
+
+    &.light {
+      background-color: var(--color-surface-secondary);
+    }
+
+    &.white {
+      background-color: var(--color-surface-primary);
+    }
+
+    .icon.circle {
+      display: grid;
+      place-items: center;
+      width: 3rem;
+      aspect-ratio: 1;
+      border-radius: 50%;
+      background-color: var(--color-ui-primary);
+      color: var(--color-on-ui-primary);
+
+      :global(img),
+      :global(svg) {
+        width: 50%;
+        height: auto;
+      }
+    }
+
+    a {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5em;
+      color: var(--color-text);
+      text-decoration: none;
+      font-weight: var(--text-medium);
+
+      :global(.arrow) {
+        width: 1em;
+        height: 1em;
+        transition: translate 200ms ease-out;
+      }
     }
   }
 </style>
