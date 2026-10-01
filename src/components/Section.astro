@@ -1,8 +1,12 @@
 ---
-const { theme, variant } = Astro.props;
+const { theme, variant, fullChild } = Astro.props;
 ---
 
-<section data-theme={theme} class={variant}><div><slot /></div></section>
+<section data-theme={theme} class={variant}>
+  <div class:list={["inner", { full: fullChild }]}>
+    <slot />
+  </div>
+</section>
 
 <style>
   [data-theme] {
@@ -14,8 +18,19 @@ const { theme, variant } = Astro.props;
     padding-block: 6rem;
     border: 1px solid var(--color-ui-primary);
   }
-
+  [data-theme="grey"] {
+    --bg-theme: var(--color-surface-secondary);
+  }
   section {
-    padding: var(--space-10);
+    padding-block: var(--space-10);
+  }
+
+  .full {
+    display: grid;
+    grid-template-columns: subgrid;
+    grid-column: full;
+    > :global(*) {
+      grid-column: content;
+    }
   }
 </style>
