@@ -1,12 +1,13 @@
 ---
 import DynamicIcon from "./helpers/DynamicIcon.astro";
-const { icon, title, description } = Astro.props;
+const { icon, title, description, link, linkText } = Astro.props;
 ---
 
 <div class="card">
   <DynamicIcon name={icon} />
   <h5>{title}</h5>
   <p>{description}</p>
+  <a href={link}>{linkText}</a>
 </div>
 
 <style>
