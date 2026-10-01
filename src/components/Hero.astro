@@ -47,18 +47,19 @@ import Arrow from "../icons/arrow--right.svg";
       color: var(--color-on-ui-primary);
       --underline: 3px;
       text-decoration: underline #ffcc4a var(--underline);
+      position: relative;
+      width: fit-content;
       text-underline-offset: 3px;
-      anchor-name: --title;
       text-box: cap alphabetic;
+
       &::before {
         content: "";
         position: absolute;
-        left: 0;
-        right: anchor(--title left);
-        top: calc(anchor(--title top) + 1cap);
-        margin-top: 3px;
+        right: 100%;
+        width: 100vw;
+        bottom: 0.97em;
         height: 3px;
-        background: linear-gradient (90deg, #0000, #ffcc4a);
+        background: linear-gradient(90deg, #0000, #ffcc4a);
       }
     }
 
@@ -119,6 +120,45 @@ import Arrow from "../icons/arrow--right.svg";
       color: #f3f4f6;
       width: 1rem;
       height: 0.8rem;
+    }
+
+    @media (max-width: 56rem) {
+      .hero {
+        grid-template-columns: minmax(0, 1fr);
+        grid-template-rows: auto auto auto;
+      }
+
+      .hero-background {
+        grid-area: 1 / 1;
+      }
+
+      .hero-content {
+        grid-area: 1 / 1;
+        justify-content: flex-start;
+        max-width: none;
+        min-height: 0;
+        padding: 3rem 1rem;
+      }
+
+      h1 {
+        font-size: clamp(2rem, 9vw, var(--text-size-xxxl));
+      }
+
+      .buttons {
+        flex-wrap: wrap;
+      }
+
+      .hero-image {
+        grid-area: 2 / 1;
+        height: 16rem;
+        object-position: center 20%;
+      }
+
+      :global(.hero-cards) {
+        grid-area: 3 / 1;
+        transform: none;
+        padding: 1.5rem 1rem 2rem;
+      }
     }
   }
 </style>
