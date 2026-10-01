@@ -2,26 +2,59 @@
 import DoughnutChart from "../components/DoughnutChart.astro";
 import Section from "@components/Section.astro";
 import { getExperience } from "@lib/api";
+import SectionHeader from "@components/SectionHeader.astro";
 const data = await getExperience();
 const { title, eyebrow, subtitle, stats } = data;
 ---
 
 <Section theme="yellow">
-  <h2>{title}</h2>
-  <div class="chart-grid">
-    {
-      stats.map((stat: any) => (
-        <DoughnutChart figNumber={stat.value} figText={stat.label} />
-      ))
-    }
+  <div class="chartContainer">
+    <div class="sectionHeader">
+      <SectionHeader eyebrowText={eyebrow} title={title} subtitle={subtitle} />
+    </div>
+
+    <div class="chart-grid">
+      {
+        stats.map((stat: any) => (
+          <DoughnutChart figNumber={stat.value} figText={stat.label} />
+        ))
+      }
+    </div>
   </div>
 </Section>
 
 <style>
+  .chartContainer {
+    display: flex;
+    width: 100%;
+    gap: 89px;
+    align-items: center;
+    margin-inline: auto;
+  }
+
+  .sectionHeader {
+    width: 375px;
+    align-self: flex-start;
+  }
+
   .chart-grid {
+    flex: 1;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     gap: 2rem;
+  }
+
+  @media (max-width: 768px) {
+    .chartContainer {
+      flex-direction: column;
+      gap: var(
+        --space-9
+      ); /* or whatever gap makes sense stacked — 89px is likely too much vertically */
+    }
+
+    .chartContainer > div:first-child {
+      flex: 0 0 auto; /* let it size to content instead of a fixed 375px */
+    }
   }
 </style>

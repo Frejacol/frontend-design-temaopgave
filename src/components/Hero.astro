@@ -7,40 +7,76 @@ import Arrow from "../icons/arrow--right.svg";
 ---
 
 <section class="hero">
+  <div class="hero-background"></div>
   <div class="hero-content">
     <h1>Empowering Your Business Growth</h1>
+
     <p>
       Discover tailored strategies and expert insights to take your business to
       the next level. Let us help you navigate challenges and achieve
       sustainable success.
     </p>
-
-    <Button variant="accent"> Book a meeting </Button>
-    <Button variant="default">Learn more <Arrow class="arrow" /></Button>
+    <div class="buttons">
+      <Button variant="accent"> Book a meeting </Button>
+      <Button variant="default">Learn more <Arrow class="arrow" /></Button>
+    </div>
   </div>
 
-  <Image src={CEOImage} alt="CEO" />
+  <Image src={CEOImage} alt="CEO" class="hero-image" />
 
-  <Services />
+  <Services class="hero-cards" />
 </section>
-
 <style>
   @layer components {
     .hero {
       background-color: #f3f4f6;
-      padding: 2rem;
+      display: grid;
+      overflow: hidden;
+      grid-template-columns:
+        [full-start] 1fr
+        [content-start] minmax(0, 600px)
+        [middle] minmax(0, 600px) [content-end]
+        1fr [full-end];
+      grid-template-rows:
+        [nav-start] 0
+        [text-start] auto
+        [text-end cards-start] auto
+        [cards-end];
     }
 
-    .arrow {
-      color: #f3f4f6;
-      width: 1rem;
-      height: 0.8rem;
+    h1 {
+      color: var(--color-on-ui-primary);
+      --underline: 3px;
+      text-decoration: underline #ffcc4a var(--underline);
+      text-underline-offset: 3px;
+      anchor-name: --title;
+      text-box: cap alphabetic;
+      &::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: anchor(--title left);
+        top: calc(anchor(--title top) + 1cap);
+        margin-top: 3px;
+        height: 3px;
+        background: linear-gradient (90deg, black, #ffcc4a);
+      }
     }
 
-    /* mønster til baggrund ved siden af hero billede 
-    .pattern {
+    p {
+      color: var(--color-on-ui-primary-muted);
+    }
+
+    .buttons {
+      display: flex;
+      gap: var(--space-4);
+    }
+
+    .hero-background {
+      grid-column: full-start / middle;
+      grid-row: text-start / cards-start;
+      background-color: var(--color-surface-highlight);
       --pattern-color: #ffcc4a;
-
       background:
         radial-gradient(ellipse farthest-side at 65% 35%, #0000, #000),
         conic-gradient(
@@ -50,6 +86,40 @@ import Arrow from "../icons/arrow--right.svg";
           ) -1px -1px /
           80px 80px,
         #000;
-    }*/
+    }
+
+    .hero-content {
+      grid-column: content-start / middle;
+      grid-row: text-start / cards-start;
+      position: relative;
+      display: flex;
+      z-index: 1;
+      flex-direction: column;
+      justify-content: center;
+      gap: var(--space-5);
+      max-width: 508px;
+      min-height: 330px;
+    }
+
+    .hero-image {
+      grid-column: middle / full-end;
+      grid-row: nav-start / cards-start;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      overflow: hidden;
+    }
+
+    :global(.hero-cards) {
+      grid-column: content-start / content-end;
+      grid-row: cards-start / cards-end;
+      transform: translateY(-50%);
+    }
+
+    .arrow {
+      color: #f3f4f6;
+      width: 1rem;
+      height: 0.8rem;
+    }
   }
 </style>

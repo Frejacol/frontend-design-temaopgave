@@ -2,12 +2,14 @@
 //@ts-nocheck
 import ServiceCard from "@components/ServiceCard.astro";
 
+const { class: className } = Astro.props;
+
 const serviceData = await fetch("https://ftk-api.pages.dev/services").then(
   (res) => res.json(),
 );
 ---
 
-<div class="services">
+<div class:list={["services", className]}>
   {serviceData.map((service) => <ServiceCard service={service} />)}
 </div>
 
@@ -16,6 +18,7 @@ const serviceData = await fetch("https://ftk-api.pages.dev/services").then(
     .services {
       display: grid;
       gap: 1rem;
+      grid-template-columns: repeat(3, 1fr);
     }
   }
 </style>
