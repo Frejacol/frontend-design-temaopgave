@@ -38,8 +38,8 @@ p {
 body {
   display: grid;
   grid-template-columns:
-    [full-start] 1fr [content] minmax(0, 1200px)
-    1fr [full-end];
+    [full-start] minmax(1rem, 1fr) [content] minmax(0, 1200px)
+    minmax(1rem, 1fr) [full-end];
 
   header,
   footer,

@@ -61,6 +61,19 @@ const { variant } = Astro.props;
         top: var(--square-offset-y);
         left: var(--square-offset-x);
       }
+
+      @media (max-width: 600px) {
+        &:has(> :global(img)) {
+          aspect-ratio: 16 / 10;
+        }
+
+        &:is(.topLeft, .topRight, .bottomLeft, .topLeftLong)::before {
+          --square-width: 45%;
+          --square-height: 50%;
+          --square-offset-x: -1rem;
+          --square-offset-y: -1rem;
+        }
+      }
     }
   }
 </style>
