@@ -19,6 +19,10 @@ const serviceData = await fetch("https://ftk-api.pages.dev/services").then(
       display: grid;
       gap: 1rem;
       grid-template-columns: repeat(3, 1fr);
+
+      @media (max-width: 56rem) {
+        grid-template-columns: minmax(0, 1fr);
+      }
     }
   }
 </style>
