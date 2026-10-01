@@ -13,16 +13,27 @@ import ArrowRight from "@icons/arrow--right.svg";
 <style>
   @layer components {
     article {
+      display: flex;
+      flex-direction: column;
       background: var(--color-blue-700-transparent);
+      backdrop-filter: blur(16px);
       color: var(--color-on-surface-elevated);
-      padding: 2rem; /* Dette burde være en token */
-      border-radius: 20px; /* Dette burde være en token */
+      padding: var(--space-6);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: var(--border-card);
+      height: 100%;
+      gap: 10px;
+
+      h5 {
+        gap: var(--space-8);
+      }
     }
     a {
       display: inline flex;
       gap: 1ch;
       color: var(--color-action);
       font-weight: bold;
+      margin-top: auto;
 
       svg {
         inline-size: 16px;

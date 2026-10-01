@@ -7,14 +7,14 @@ const { figNumber } = Astro.props;
   <svg viewBox="0 0 100 100">
     <circle class="track"></circle>
     <circle class="progress" pathLength="100"></circle>
-    <circle class="marker" pathLength="100" r="4" fill="black"></circle>
+    <circle class="marker" pathLength="100" r="5" fill="black"></circle>
   </svg>
   <figcaption>{figText}</figcaption>
 </figure>
 
 <style>
   figure {
-    flex: 0 1 200px;
+    flex: 0 0 200px;
     min-inline-size: 0;
     text-align: center;
     container: stat / inline-size;
@@ -55,7 +55,7 @@ const { figNumber } = Astro.props;
     cy: 50;
     r: 46;
     fill: none;
-    stroke-width: 5;
+    stroke-width: 3;
   }
 
   .progress {
@@ -70,6 +70,7 @@ const { figNumber } = Astro.props;
     stroke: var(--color-surface-primary);
     offset-path: circle(46px at 50px 50px);
     offset-distance: var(--value-percent);
+    stroke-width: 3;
   }
 
   figcaption {
