@@ -1,11 +1,10 @@
 ---
-import "@styles/main.css";
-import { Image } from "astro:assets";
+import DynamicIcon from "./helpers/DynamicIcon.astro";
 const { icon, title, description } = Astro.props;
 ---
 
 <div class="card">
-  <Image src={icon} alt={icon} />
+  <DynamicIcon name={icon} />
   <h5>{title}</h5>
   <p>{description}</p>
 </div>

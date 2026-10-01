@@ -1,0 +1,141 @@
+---
+import Card from "../components/Card.astro";
+import Section from "@components/Section.astro";
+import { getFinancialProjections } from "@lib/api";
+import SectionHeader from "@components/SectionHeader.astro";
+import ArrowRight from "../icons/arrow--right.svg";
+import ArrowLeft from "../icons/arrow-left.svg";
+const data = await getFinancialProjections();
+const { title, eyebrow, subtitle, values } = data;
+---
+
+<Section theme="grey" fullChild={true}>
+  <div class="grid">
+    <SectionHeader eyebrowText={eyebrow} title={title} subtitle={subtitle} />
+    <div class="button-group">
+      <button value="-1" command="--scroll" commandfor="scroller"
+        ><ArrowLeft class="arrow" /></button
+      >
+      <button value="1" command="--scroll" commandfor="scroller"
+        ><ArrowRight class="arrow" /></button
+      >
+    </div>
+  </div>
+  <div id="scroller">
+    {
+      values.map((value: any) => (
+        <Card
+          icon={value.icon}
+          title={value.title}
+          description={value.description}
+        />
+      ))
+    }
+  </div>
+</Section>
+
+<style>
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    .button-group {
+      place-self: end;
+      display: flex;
+      gap: 1.25rem;
+
+      button {
+        background-color: var(--color-ui-primary);
+        border: none;
+        aspect-ratio: 1;
+        border-radius: 50%;
+        cursor: pointer;
+        inline-size: 3.25rem;
+        place-items: center;
+        display: grid;
+        transition: opacity 0.2s;
+
+        &:disabled {
+          opacity: 0.3;
+          cursor: default;
+        }
+        .arrow {
+          color: var(--color-surface-primary);
+          width: 50%;
+          height: auto;
+        }
+      }
+    }
+  }
+
+  #scroller {
+    grid-column: full;
+    margin-top: var(--space-8);
+    display: flex;
+    gap: 1rlh;
+    scroll-behavior: smooth;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    padding-inline: max(1rem, 50% - 1200px / 2);
+    scroll-padding-inline: max(1rem, 50% - 1200px / 2);
+    > :global(*) {
+      scroll-snap-align: start;
+      flex: 0 0 min(90%, 400px);
+    }
+  }
+  @media (max-width: 600px) {
+    .grid {
+      grid-template-columns: 1fr;
+      row-gap: var(--space-6);
+
+      .button-group {
+        gap: 0.75rem;
+
+        button {
+          inline-size: 2.75rem;
+        }
+      }
+    }
+
+    #scroller {
+      gap: 1rem;
+
+      > :global(*) {
+        flex-basis: 85%;
+      }
+    }
+  }
+</style>
+
+<script>
+  const scroller = document.querySelector<HTMLElement>("#scroller")!;
+  const prev = document.querySelector<HTMLButtonElement>(
+    '[commandfor="scroller"][value="-1"]',
+  )!;
+  const next = document.querySelector<HTMLButtonElement>(
+    '[commandfor="scroller"][value="1"]',
+  )!;
+
+  function cardStep() {
+    const card = scroller.firstElementChild as HTMLElement | null;
+    const gap = parseFloat(getComputedStyle(scroller).columnGap) || 0;
+    return card ? card.offsetWidth + gap : scroller.clientWidth;
+  }
+
+  scroller.addEventListener("command", (e: any) => {
+    if (e.command === "--scroll") {
+      scroller.scrollBy({ left: cardStep() * Number(e.source.value) });
+    }
+  });
+
+  function updateButtons() {
+    const maxScroll = scroller.scrollWidth - scroller.clientWidth;
+    prev.disabled = scroller.scrollLeft <= 1;
+    next.disabled = scroller.scrollLeft >= maxScroll - 1;
+  }
+
+  scroller.addEventListener("scroll", updateButtons, { passive: true });
+  new ResizeObserver(updateButtons).observe(scroller);
+  updateButtons();
+</script>
