@@ -2,10 +2,16 @@
 import { getTeamMembers } from "@lib/api";
 import Layout from "@layouts/Layout.astro";
 import TeamSection from "@sections/TeamSection.astro";
+import HeroClean from "@components/HeroClean.astro";
 const team = await getTeamMembers();
 console.log(team);
 ---
 
 <Layout>
+  <HeroClean
+    eyebrowText="TEAM"
+    title="The Consultors"
+    subtitle="Our success stems from the synergy between dedicated teams and our valued clients. We prioritize a company culture that fosters exceptional productivity, ensures customer satisfaction."
+  />
   <TeamSection />
 </Layout>

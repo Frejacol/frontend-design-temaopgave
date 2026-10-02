@@ -2,11 +2,17 @@
 import Layout from "@layouts/Layout.astro";
 import InfocardsSection from "@sections/InfocardsSection.astro";
 import OurVision from "@sections/OurVision.astro";
+import HeroClean from "@components/HeroClean.astro";
 ---
 
 <Layout>
   <main>
-    <h1>About us</h1>
+    <HeroClean
+      eyebrowText="ABOUT"
+      line="right"
+      title="Igniting Innovation"
+      subtitle="Our strength lies in the collaboration between our talented teams and esteemed clients. We cultivate a workplace that champions innovation, promotes peak performance, and guarantees client satisfaction."
+    />
     <OurVision />
     <InfocardsSection theme="grey" cardVariant="white" />
   </main>

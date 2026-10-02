@@ -9,7 +9,7 @@ import Arrow from "../icons/arrow--right.svg";
 <section class="hero">
   <div class="hero-background"></div>
   <div class="hero-content">
-    <h1>Empowering Your Business Growth</h1>
+    <h1><span class="underlined">Empowerin</span>g Your Business Growth</h1>
 
     <p>
       Discover tailored strategies and expert insights to take your business to
@@ -45,8 +45,6 @@ import Arrow from "../icons/arrow--right.svg";
 
     h1 {
       color: var(--color-on-ui-primary);
-      --underline: 3px;
-      text-decoration: underline #ffcc4a var(--underline);
       position: relative;
       width: fit-content;
       text-underline-offset: 3px;
@@ -57,10 +55,15 @@ import Arrow from "../icons/arrow--right.svg";
         position: absolute;
         right: 100%;
         width: 100vw;
-        bottom: 0.97em;
+        top: calc(1cap + 3px);
         height: 3px;
-        background: linear-gradient(90deg, #0000, #ffcc4a);
+        background: linear-gradient(to left, #ffcc4a, #0000 12rem);
       }
+    }
+
+    .underlined {
+      text-decoration: underline #ffcc4a 3px;
+      text-underline-offset: 3px;
     }
 
     p {
@@ -96,9 +99,10 @@ import Arrow from "../icons/arrow--right.svg";
       z-index: 1;
       flex-direction: column;
       justify-content: center;
-      gap: var(--space-5);
+      gap: var(--space-6);
       max-width: 508px;
       min-height: 330px;
+      padding-block-end: 8rem;
     }
 
     .hero-image {

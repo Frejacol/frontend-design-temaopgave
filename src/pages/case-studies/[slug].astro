@@ -3,6 +3,7 @@
 import { getCaseStudies } from "@lib/api";
 import { Image } from "astro:assets";
 import Layout from "@layouts/Layout.astro";
+import HeroClean from "@components/HeroClean.astro";
 
 export async function getStaticPaths() {
   const caseStudies = await getCaseStudies();
@@ -18,6 +19,11 @@ const { caseName, category, date, image, buttonLabel } = caseStudy.caseDetails;
 ---
 
 <Layout>
+  <HeroClean
+    eyebrowText="CASE STUDIES"
+    title="Taxes & Efficiency"
+    subtitle="Our achievements reflect the close collaboration between our expert teams and our esteemed clientele. We cultivate a workplace that champions peak performance and guarantees client satisfaction."
+  />
   <article class="case-story-article">
     <header>
       <Image
@@ -26,6 +32,7 @@ const { caseName, category, date, image, buttonLabel } = caseStudy.caseDetails;
         width={image.width}
         height={image.height}
       />
+
       <div class="case-details">
         <dl>
           <div>
