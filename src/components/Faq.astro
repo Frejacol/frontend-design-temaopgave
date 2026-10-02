@@ -1,0 +1,125 @@
+---
+import Section from "@components/Section.astro";
+import { getFAQ } from "@lib/api";
+const data = await getFAQ();
+---
+
+<Section>
+  <div class="faq">
+    <div class="heading">
+      <p>FAQ</p>
+      <h2>Customer Questions</h2>
+    </div>
+    {
+      data.map((faq: any) => (
+        <details name="faq">
+          <summary>{faq.question}</summary>
+          <div>
+            <p>{faq.answer}</p>
+          </div>
+        </details>
+      ))
+    }
+  </div>
+</Section>
+
+<style>
+  @layer components {
+    .heading {
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-3);
+      margin-bottom: var(--space-6);
+    }
+
+    .faq {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-5);
+      background-color: var(--color-surface-secondary);
+      padding: var(--space-10) var(--space-10);
+      border-radius: var(--border-card-faq);
+    }
+
+    details {
+      border-bottom: 1px solid #dadada;
+
+      &[open] summary::after {
+        content: "-";
+        font-size: var(--text-size-xl);
+        font-weight: var(--text-xtra-xtra-light);
+      }
+
+      p {
+        margin: 0;
+        padding-bottom: var(--space-5);
+        font-size: var(--text-size-s);
+        color: var(--color-text-muted);
+      }
+    }
+
+    summary {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: var(--space-5);
+      padding-block: var(--space-5);
+      font-weight: var(--text-light);
+      font-size: var(--text-size-s);
+      cursor: pointer;
+      list-style: none;
+
+      &::-webkit-details-marker {
+        display: none;
+      }
+
+      &::after {
+        content: "+";
+        font-size: var(--text-size-xl);
+        font-weight: var(--text-xtra-xtra-light);
+      }
+    }
+
+    @supports (interpolate-size: allow-keywords) {
+      @media (prefers-reduced-motion: no-preference) {
+        details {
+          interpolate-size: allow-keywords;
+        }
+
+        details::details-content {
+          block-size: 0;
+          overflow: clip;
+          transition:
+            block-size 0.3s ease,
+            content-visibility 0.3s;
+          transition-behavior: allow-discrete;
+        }
+
+        details[open]::details-content {
+          block-size: auto;
+        }
+      }
+    }
+  }
+
+  @media (max-width: 600px) {
+    .faq {
+      padding: var(--space-7) var(--space-5);
+      border-radius: var(--border-card);
+    }
+
+    .heading {
+      margin-bottom: var(--space-4);
+
+      h2 {
+        font-size: 1.75rem;
+      }
+    }
+
+    summary {
+      align-items: center;
+      padding-block: var(--space-4);
+    }
+  }
+</style>
