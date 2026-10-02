@@ -13,7 +13,7 @@ const { title, eyebrow, subtitle, stats } = data;
       <SectionHeader eyebrowText={eyebrow} title={title} subtitle={subtitle} />
     </div>
 
-    <div class="chart-grid">
+    <div class="chart-grid" scroll-trigger>
       {
         stats.map((stat: any) => (
           <DoughnutChart figNumber={stat.value} figText={stat.label} />
@@ -30,6 +30,10 @@ const { title, eyebrow, subtitle, stats } = data;
     gap: 89px;
     align-items: center;
     margin-inline: auto;
+
+    animation: --switch linear both;
+    animation-timeline: view();
+    animation-range: 12.5% 25%;
   }
 
   .sectionHeader {
@@ -45,6 +49,10 @@ const { title, eyebrow, subtitle, stats } = data;
     gap: 2rem;
   }
 
+  .sectionHeader :global(p:last-child) {
+    color: var(--color-text);
+  }
+
   @media (max-width: 768px) {
     .chartContainer {
       flex-direction: column;
@@ -55,6 +63,15 @@ const { title, eyebrow, subtitle, stats } = data;
 
     .chartContainer > div:first-child {
       flex: 0 0 auto; /* let it size to content instead of a fixed 375px */
+    }
+  }
+
+  @keyframes --switch {
+    from {
+      --sentinel: 0;
+    }
+    to {
+      --sentinel: 1;
     }
   }
 </style>
