@@ -1,59 +1,61 @@
 ---
-const { eyebrowText, title, subtitle } = Astro.props;
+const { eyebrowText, line = "left", title, subtitle } = Astro.props;
 ---
 
 <section class="heroClean">
   <p class="eyebrow">{eyebrowText}</p>
-  <h2>{title}</h2>
+  <h2 data-line={line}>{title}</h2>
   <p class="sub">{subtitle}</p>
 </section>
 
 <style>
   .heroClean {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     background: var(--color-surface-secondary);
+    gap: var(--space-6);
+    padding: var(--space-9);
+    overflow: hidden;
   }
 
-  h1 {
-    color: var(--color-on-ui-primary);
-    --underline: 3px;
-    text-decoration: underline #ffcc4a var(--underline);
+  h2 {
+    --underline: 7px;
+    --line-color: #ffcc4a;
+
+    color: var(--color-text);
+    position: relative;
+    width: fit-content;
+    text-decoration: underline var(--line-color) var(--underline);
     text-underline-offset: 3px;
     text-box: cap alphabetic;
+
     &::before {
       content: "";
       position: absolute;
-      left: 0;
-      right: anchor(--title left);
-      top: calc(anchor(--title top) + 1cap);
-      margin-top: 3px;
-      height: 3px;
-      background: linear-gradient (90deg, black, #ffcc4a);
+      top: calc(1cap + 3px);
+      width: 100vw;
+      height: var(--underline);
+      background: var(--line-color);
+    }
+
+    &[data-line="left"]::before {
+      right: 100%;
+    }
+
+    &[data-line="right"]::before {
+      left: 100%;
+    }
+
+    &[data-line="none"]::before {
+      display: none;
     }
   }
 
-  p {
+  .sub {
     font-weight: var(--text-xtra-light);
     color: var(--color-text-muted);
-  }
-
-  .lineLeft {
-    text-decoration: underline #ffcc4a var(--underline);
-    text-underline-offset: 3px;
-    text-box: cap alphabetic;
-    &::before {
-      content: "";
-      position: absolute;
-      left: 0;
-      right: anchor(--title left);
-      top: calc(anchor(--title top) + 1cap);
-      margin-top: 3px;
-      height: 3px;
-      background: linear-gradient (90deg, black, #ffcc4a);
-    }
-  }
-
-  .lineRight {
-    background: var(--color-action);
-    color: var(--color-ui-primary);
+    max-width: 34%;
+    text-align: center;
   }
 </style>
