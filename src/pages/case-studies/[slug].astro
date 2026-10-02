@@ -51,7 +51,7 @@ const { caseName, category, date, image, buttonLabel } = caseStudy.caseDetails;
         <a href="#0" class="button">{buttonLabel}</a>
       </div>
     </header>
-    <section class="case-story-content">
+    <section class="case-story-content flow">
       {
         caseStudy.sections.map((section, index) => (
           <>
@@ -129,20 +129,26 @@ const { caseName, category, date, image, buttonLabel } = caseStudy.caseDetails;
       grid-column: breakout;
       display: grid;
       grid-template-columns: subgrid;
+      --flow-space: var(--space-4);
 
       > * {
         grid-column: content;
       }
 
-      > * + * {
-        margin-top: var(--space-4);
+      > :is(h2, h3) {
+        --flow-space: var(--space-6);
+      }
+
+      > :is(h2, h3) + * {
+        --flow-space: var(--space-3);
       }
 
       > figure {
+        --flow-space: var(--space-8);
         grid-column: breakout;
         display: grid;
         grid-template-columns: subgrid;
-        margin-block: var(--space-8) 0;
+        margin-block-end: 0;
         margin-inline: 0;
 
         img {
@@ -171,23 +177,6 @@ const { caseName, category, date, image, buttonLabel } = caseStudy.caseDetails;
           color: var(--color-on-ui-primary);
         }
       }
-
-      img {
-        grid-column: breakout;
-        width: 100%;
-        height: auto;
-      }
-
-      figcaption {
-        grid-column: content;
-        margin-top: var(--space-3);
-        font-size: var(--text-size-xs);
-        color: var(--color-text-muted);
-      }
-    }
-
-    h3 {
-      margin-top: var(--space-8);
     }
 
     p,

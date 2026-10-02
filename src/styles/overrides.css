@@ -1,6 +1,4 @@
 /* Override styles here */
-.flow {
-  > * + * {
-    margin-top: 1em;
-  }
+.flow > * + * {
+  margin-block-start: var(--flow-space, 1em);
 }
