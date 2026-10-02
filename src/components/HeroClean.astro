@@ -1,0 +1,59 @@
+---
+const { eyebrowText, title, subtitle } = Astro.props;
+---
+
+<section class="heroClean">
+  <p class="eyebrow">{eyebrowText}</p>
+  <h2>{title}</h2>
+  <p class="sub">{subtitle}</p>
+</section>
+
+<style>
+  .heroClean {
+    background: var(--color-surface-secondary);
+  }
+
+  h1 {
+    color: var(--color-on-ui-primary);
+    --underline: 3px;
+    text-decoration: underline #ffcc4a var(--underline);
+    text-underline-offset: 3px;
+    text-box: cap alphabetic;
+    &::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: anchor(--title left);
+      top: calc(anchor(--title top) + 1cap);
+      margin-top: 3px;
+      height: 3px;
+      background: linear-gradient (90deg, black, #ffcc4a);
+    }
+  }
+
+  p {
+    font-weight: var(--text-xtra-light);
+    color: var(--color-text-muted);
+  }
+
+  .lineLeft {
+    text-decoration: underline #ffcc4a var(--underline);
+    text-underline-offset: 3px;
+    text-box: cap alphabetic;
+    &::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: anchor(--title left);
+      top: calc(anchor(--title top) + 1cap);
+      margin-top: 3px;
+      height: 3px;
+      background: linear-gradient (90deg, black, #ffcc4a);
+    }
+  }
+
+  .lineRight {
+    background: var(--color-action);
+    color: var(--color-ui-primary);
+  }
+</style>
