@@ -1,0 +1,21 @@
+---
+import Membercard from "../components/Membercard.astro";
+import Section from "@components/Section.astro";
+import { getTeamMembers } from "@lib/api";
+
+const data = await getTeamMembers();
+---
+
+<Section>
+  <div class="MemberGrid">
+    {data.map((employer: any) => <Membercard employer={employer} />)}
+  </div>
+</Section>
+
+<style>
+  .MemberGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-7);
+  }
+</style>

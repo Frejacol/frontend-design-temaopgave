@@ -1,0 +1,66 @@
+---
+import DynamicIcon from "@components/helpers/DynamicIcon.astro";
+import { Image } from "astro:assets";
+const { employer } = Astro.props;
+---
+
+<article>
+  <Image
+    style={`view-transition-name: img-${employer.slug}`}
+    src={employer.image.src}
+    alt=""
+    width={employer.image.width}
+    height={employer.image.height}
+  />
+
+  <div class="content">
+    <h3>
+      <a href={`/team/${employer.slug}`}>{employer.name}</a>
+    </h3>
+    <p class="title">{employer.title}</p>
+    <p class="teamDescription">{employer.description}</p>
+  </div>
+
+  <div class="socials">
+    {
+      employer.social_links.map((s: any) => (
+        <a href={s.url}>
+          <DynamicIcon name={s.icon} />
+        </a>
+      ))
+    }
+  </div>
+</article>
+
+<style>
+  article {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-4);
+  }
+
+  article img {
+    border-radius: var(--border-card);
+  }
+
+  .content {
+    padding: var(--space-4);
+    text-align: center;
+  }
+
+  .teamDescription {
+    color: var(--color-text-muted);
+  }
+
+  a {
+    text-decoration: none;
+    color: var(--color-text);
+  }
+
+  .socials {
+    display: flex;
+    flex-direction: row;
+    gap: var(--space-4);
+  }
+</style>
