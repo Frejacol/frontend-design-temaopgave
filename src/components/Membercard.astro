@@ -5,19 +5,21 @@ const { employer } = Astro.props;
 ---
 
 <article>
-  <Image
-    style={`view-transition-name: img-${employer.slug}`}
-    src={employer.image.src}
-    alt=""
-    width={employer.image.width}
-    height={employer.image.height}
-  />
+  <div class="media">
+    <Image
+      style={`view-transition-name: img-${employer.slug}`}
+      src={employer.image.src}
+      alt=""
+      width={employer.image.width}
+      height={employer.image.height}
+    />
+    <p class="title">{employer.title}</p>
+  </div>
 
   <div class="content">
     <h3>
       <a href={`/team/${employer.slug}`}>{employer.name}</a>
     </h3>
-    <p class="title">{employer.title}</p>
     <p class="teamDescription">{employer.description}</p>
   </div>
 
@@ -40,8 +42,27 @@ const { employer } = Astro.props;
     gap: var(--space-4);
   }
 
-  article img {
+  .media {
+    position: relative;
+    width: 100%;
+  }
+
+  .media img {
+    display: block;
+    width: 100%;
+    height: auto;
     border-radius: var(--border-card);
+  }
+
+  .title {
+    position: absolute;
+    right: 1.5ex;
+    bottom: 1.5ex;
+    padding: 0.5ex 1ex;
+    border-radius: 2rem;
+    background: var(--color-ui-primary);
+    color: var(--color-on-ui-primary);
+    font-size: 1em;
   }
 
   .content {
@@ -62,5 +83,6 @@ const { employer } = Astro.props;
     display: flex;
     flex-direction: row;
     gap: var(--space-4);
+    margin-bottom: var(--space-8);
   }
 </style>

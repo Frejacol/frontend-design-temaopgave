@@ -3,10 +3,11 @@ import Membercard from "../components/Membercard.astro";
 import Section from "@components/Section.astro";
 import { getTeamMembers } from "@lib/api";
 
+const { variant } = Astro.props;
 const data = await getTeamMembers();
 ---
 
-<Section>
+<Section variant={variant}>
   <div class="MemberGrid">
     {data.map((employer: any) => <Membercard employer={employer} />)}
   </div>

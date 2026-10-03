@@ -1,10 +1,9 @@
 ---
-import { getTeamMembers } from "@lib/api";
 import Layout from "@layouts/Layout.astro";
 import TeamSection from "@sections/TeamSection.astro";
+import SectionHeader from "@components/SectionHeader.astro";
 import HeroClean from "@components/HeroClean.astro";
-const team = await getTeamMembers();
-console.log(team);
+import Button from "@components/Button.astro";
 ---
 
 <Layout>
@@ -13,5 +12,44 @@ console.log(team);
     title="The Consultors"
     subtitle="Our success stems from the synergy between dedicated teams and our valued clients. We prioritize a company culture that fosters exceptional productivity, ensures customer satisfaction."
   />
-  <TeamSection />
+
+  <div class="team-intro">
+    <SectionHeader
+      title="Meet Our Great Team"
+      subtitle="Welcome to our amazing team! We are a group of passionate individuals dedicated to excellence and innovation. Each member brings unique skills and experiences, working together to achieve our goals. Join us as we embark on exciting projects and create lasting impacts."
+    />
+    <div class="teamButton">
+      <Button variant="default">Join our team</Button>
+    </div>
+  </div>
+  <TeamSection variant="team" />
 </Layout>
+
+<style>
+  .team-intro {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: var(--space-6);
+    align-items: end;
+    padding-block: var(--space-8);
+  }
+
+  .teamButton {
+    justify-self: end;
+  }
+
+  :global(section.team) {
+    padding-block: 0;
+  }
+
+  @media (max-width: 56rem) {
+    .team-intro {
+      grid-template-columns: minmax(0, 1fr);
+      row-gap: var(--space-4);
+    }
+
+    .teamButton {
+      justify-self: start;
+    }
+  }
+</style>
