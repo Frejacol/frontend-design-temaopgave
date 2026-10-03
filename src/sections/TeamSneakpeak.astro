@@ -1,0 +1,79 @@
+---
+import Membercard from "@components/Membercard.astro";
+import Button from "@components/Button.astro";
+import SectionHeader from "@components/SectionHeader.astro";
+import Section from "@components/Section.astro";
+import { getTeamMembers } from "@lib/api";
+
+const team = await getTeamMembers();
+const featured = team.slice(0, 2);
+---
+
+<Section>
+  <div class="meetTeamContainer">
+    <div class="intro">
+      <SectionHeader
+        eyebrowText="OUR TEAM"
+        title="We champion the bold"
+        subtitle="Our success stems from the synergy between dedicated teams and our valued clients. We prioritize a company culture that fosters exceptional productivity, ensures customer satisfaction."
+      />
+
+      <div class="button">
+        <Button variant="default"> Meet the team </Button>
+      </div>
+    </div>
+    <div class="memberContainer">
+      {featured.map((employer: any) => <Membercard employer={employer} />)}
+    </div>
+  </div>
+</Section>
+
+<style>
+  .meetTeamContainer {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.6fr);
+    gap: var(--space-8);
+    align-items: center;
+  }
+
+  .memberContainer {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-8);
+    width: 100%;
+  }
+
+  .memberContainer :global(.content) {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+    grid-column: 2;
+    grid-row: 1 / span 2;
+    align-self: center;
+  }
+
+  .intro {
+    display: flex;
+    align-self: flex-start;
+    flex-direction: column;
+    gap: var(--space-6);
+  }
+
+  .button {
+    align-self: flex-start;
+  }
+
+  .memberContainer :global(.socials) {
+    display: none;
+  }
+
+  @media (max-width: 56rem) {
+    .meetTeamContainer {
+      grid-template-columns: minmax(0, 1fr);
+    }
+
+    .memberContainer {
+      max-width: 20rem;
+    }
+  }
+</style>
