@@ -4,37 +4,45 @@ import { Image } from "astro:assets";
 const { employer } = Astro.props;
 ---
 
-<article>
-  <div class="media">
-    <Image
-      style={`view-transition-name: img-${employer.slug}`}
-      src={employer.image.src}
-      alt=""
-      width={employer.image.width}
-      height={employer.image.height}
-    />
-    <p class="title">{employer.title}</p>
-  </div>
+<div class="card-container">
+  <article>
+    <div class="media">
+      <Image
+        style={`view-transition-name: img-${employer.slug}`}
+        src={employer.image.src}
+        alt=""
+        width={employer.image.width}
+        height={employer.image.height}
+      />
+      <p class="title title--badge" aria-hidden="true">{employer.title}</p>
+    </div>
 
-  <div class="content">
-    <h3>
-      <a href={`/team/${employer.slug}`}>{employer.name}</a>
-    </h3>
-    <p class="teamDescription">{employer.description}</p>
-  </div>
+    <div class="content">
+      <h3>
+        <a href={`/team/${employer.slug}`}>{employer.name}</a>
+      </h3>
+      <p class="title title--inline">{employer.title}</p>
+      <p class="teamDescription">{employer.description}</p>
+    </div>
 
-  <div class="socials">
-    {
-      employer.social_links.map((s: any) => (
-        <a href={s.url}>
-          <DynamicIcon name={s.icon} />
-        </a>
-      ))
-    }
-  </div>
-</article>
+    <div class="socials">
+      {
+        employer.social_links.map((s: any) => (
+          <a href={s.url}>
+            <DynamicIcon name={s.icon} />
+          </a>
+        ))
+      }
+    </div>
+  </article>
+</div>
 
 <style>
+  .card-container {
+    container-type: inline-size;
+    width: 100%;
+  }
+
   article {
     display: flex;
     flex-direction: column;
@@ -54,15 +62,13 @@ const { employer } = Astro.props;
     border-radius: var(--border-card);
   }
 
-  .title {
-    position: absolute;
-    right: 1.5ex;
-    bottom: 1.5ex;
-    padding: 0.5ex 1ex;
-    border-radius: 2rem;
-    background: var(--color-ui-primary);
-    color: var(--color-on-ui-primary);
-    font-size: 1em;
+  .title--badge {
+    display: none;
+  }
+
+  .title--inline {
+    display: block;
+    font-weight: var(--text-medium);
   }
 
   .content {
@@ -81,8 +87,51 @@ const { employer } = Astro.props;
 
   .socials {
     display: flex;
-    flex-direction: row;
     gap: var(--space-4);
     margin-bottom: var(--space-8);
+  }
+
+  @container (280px <= width < 480px) {
+    .title--badge {
+      display: block;
+      position: absolute;
+      right: 1.5ex;
+      bottom: 1.5ex;
+      padding: 0.5ex 1ex;
+      border-radius: 2rem;
+      background: var(--color-ui-primary);
+      color: var(--color-on-ui-primary);
+    }
+
+    .title--inline {
+      display: none;
+    }
+  }
+
+  @container (width >= 480px) {
+    article {
+      display: grid;
+      grid-template-columns: 15rem minmax(0, 1fr);
+      align-items: center;
+      column-gap: var(--space-5);
+      row-gap: 0;
+    }
+
+    .media {
+      grid-row: 1 / span 2;
+    }
+
+    .content {
+      padding: 0;
+      text-align: left;
+      align-self: end;
+    }
+
+    .socials {
+      grid-column: 2;
+      margin-bottom: 0;
+      padding-top: var(--space-3);
+      align-self: start;
+    }
   }
 </style>
