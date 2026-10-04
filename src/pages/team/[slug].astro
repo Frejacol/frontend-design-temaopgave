@@ -96,4 +96,11 @@ const { employee } = Astro.props;
   .socials a {
     color: var(--color-text);
   }
+
+  @media (max-width: 40rem) {
+    .slugContent {
+      display: grid;
+      grid-template-columns: 1fr;
+    }
+  }
 </style>

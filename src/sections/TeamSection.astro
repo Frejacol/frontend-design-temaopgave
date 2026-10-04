@@ -19,4 +19,11 @@ const data = await getTeamMembers();
     grid-template-columns: repeat(3, 1fr);
     gap: var(--space-7);
   }
+
+  @media (max-width: 40rem) {
+    .MemberGrid {
+      display: grid;
+      grid-template-columns: 1fr;
+    }
+  }
 </style>
