@@ -3,6 +3,10 @@
 import { getTeamMembers } from "@lib/api";
 import { Image } from "astro:assets";
 import Layout from "@layouts/Layout.astro";
+import FigureGraphic from "@components/FigureGraphic.astro";
+import Button from "@components/Button.astro";
+import Arrow from "@icons/arrow-left.svg";
+import DynamicIcon from "@components/helpers/DynamicIcon.astro";
 
 export async function getStaticPaths() {
   const team = await getTeamMembers();
@@ -17,14 +21,79 @@ const { employee } = Astro.props;
 ---
 
 <Layout>
-  <Image
-    src={employee.image.src}
-    alt={employee.image.alt}
-    width={employee.image.width}
-    height={employee.image.height}
-  />
-  <h2>{employee.name}</h2>
-  <p>{employee.description_long}</p>
-  <h3>Past Experience</h3>
-  <p>{employee.past_experience}</p>
+  <div class="buttonSlug">
+    <Button href="/team" variant="default">
+      <Arrow class="arrow" /> Back to team
+    </Button>
+  </div>
+
+  <div class="slugContent">
+    <div class="imageSlug">
+      <FigureGraphic variant="topLeft">
+        <Image
+          src={employee.image.src}
+          alt={employee.image.alt}
+          width={employee.image.width}
+          height={employee.image.height}
+        />
+      </FigureGraphic>
+      <div class="socials">
+        {
+          employee.social_links.map((s: any) => (
+            <a href={s.url} aria-label={s.icon}>
+              <DynamicIcon name={s.icon} />
+            </a>
+          ))
+        }
+      </div>
+    </div>
+    <div class="infoSlug">
+      <h2>{employee.name}</h2>
+      <h5>{employee.title}</h5>
+      <p>{employee.description_long}</p>
+
+      <div class="experience">
+        <h3>Past Experience</h3>
+        <p>{employee.past_experience}</p>
+      </div>
+    </div>
+  </div>
 </Layout>
+
+<style>
+  .slugContent {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: var(--space-8);
+    margin-bottom: var(--space-6);
+  }
+
+  h5 {
+    font-weight: 200;
+    color: var(--color-text-muted);
+    margin-bottom: var(--space-6);
+  }
+
+  .buttonSlug {
+    display: flex;
+    align-self: flex-start;
+    margin-top: var(--space-6);
+    margin-bottom: var(--space-8);
+  }
+
+  .experience {
+    margin-top: var(--space-6);
+    padding-top: var(--space-6);
+    border-top: 1px solid var(--color-on-ui-primary-muted);
+  }
+
+  .socials {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-4);
+    margin-top: var(--space-4);
+  }
+  .socials a {
+    color: var(--color-text);
+  }
+</style>
