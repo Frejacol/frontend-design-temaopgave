@@ -56,13 +56,11 @@ const { title, eyebrow, subtitle, stats } = data;
   @media (max-width: 768px) {
     .chartContainer {
       flex-direction: column;
-      gap: var(
-        --space-9
-      ); /* or whatever gap makes sense stacked — 89px is likely too much vertically */
+      gap: var(--space-9);
     }
 
     .chartContainer > div:first-child {
-      flex: 0 0 auto; /* let it size to content instead of a fixed 375px */
+      flex: 0 0 auto;
     }
   }
 
