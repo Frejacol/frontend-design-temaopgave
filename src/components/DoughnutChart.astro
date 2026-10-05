@@ -19,12 +19,6 @@ const { figNumber } = Astro.props;
 
 <style>
   @layer components {
-    @property --animatedNumber {
-      syntax: "<number>";
-      inherits: true;
-      initial-value: 0;
-    }
-
     figure {
       --animatedNumber: calc(var(--value) * var(--sentinel, 1));
       transition: --animatedNumber 1s ease;

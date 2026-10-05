@@ -54,3 +54,18 @@ body {
     }
   }
 }
+
+@keyframes switch {
+  from {
+    --sentinel: 0;
+  }
+  to {
+    --sentinel: 1;
+  }
+}
+
+@property --animatedNumber {
+  syntax: "<number>";
+  inherits: true;
+  initial-value: 0;
+}
