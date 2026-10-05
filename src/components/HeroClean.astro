@@ -9,80 +9,82 @@ const { eyebrowText, line = "left", title, subtitle } = Astro.props;
 </section>
 
 <style>
-  .heroClean {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background: var(--color-surface-secondary);
-    gap: var(--space-6);
-    padding: var(--space-9);
-    overflow: hidden;
-    text-align: center;
-  }
-
-  h2 {
-    font-size: clamp(2rem, 7vw, var(--text-size-xxl));
-    --underline: 7px;
-    --line-color: #ffcc4a;
-
-    color: var(--color-text);
-    position: relative;
-    width: fit-content;
-    text-decoration: underline var(--line-color) var(--underline);
-    text-underline-offset: 3px;
-    text-box: cap alphabetic;
-
-    &::before {
-      content: "";
-      position: absolute;
-      top: calc(1cap + 3px);
-      width: 100vw;
-      height: var(--underline);
-      background: var(--line-color);
-    }
-
-    &[data-line="left"]::before {
-      right: 100%;
-    }
-
-    &[data-line="right"]::before {
-      left: 100%;
-    }
-
-    &[data-line="none"]::before {
-      display: none;
-    }
-  }
-
-  .sub {
-    font-weight: var(--text-xtra-light);
-    color: var(--color-text-muted);
-    max-width: min(34%, 60ch);
-    text-align: center;
-  }
-
-  @media (max-width: 64rem) {
+  @layer components {
     .heroClean {
-      padding: var(--space-8) var(--space-6);
-    }
-
-    .sub {
-      max-width: 70%;
-    }
-  }
-
-  @media (max-width: 40rem) {
-    .heroClean {
-      padding: var(--space-7) var(--space-4);
-      gap: var(--space-4);
-    }
-
-    .sub {
-      max-width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background: var(--color-surface-secondary);
+      gap: var(--space-6);
+      padding: var(--space-9);
+      overflow: hidden;
+      text-align: center;
     }
 
     h2 {
-      --underline: 4px;
+      font-size: clamp(2rem, 7vw, var(--text-size-xxl));
+      --underline: 7px;
+      --line-color: #ffcc4a;
+
+      color: var(--color-text);
+      position: relative;
+      width: fit-content;
+      text-decoration: underline var(--line-color) var(--underline);
+      text-underline-offset: 3px;
+      text-box: cap alphabetic;
+
+      &::before {
+        content: "";
+        position: absolute;
+        top: calc(1cap + 3px);
+        width: 100vw;
+        height: var(--underline);
+        background: var(--line-color);
+      }
+
+      &[data-line="left"]::before {
+        right: 100%;
+      }
+
+      &[data-line="right"]::before {
+        left: 100%;
+      }
+
+      &[data-line="none"]::before {
+        display: none;
+      }
+    }
+
+    .sub {
+      font-weight: var(--text-xtra-light);
+      color: var(--color-text-muted);
+      max-width: min(34%, 60ch);
+      text-align: center;
+    }
+
+    @media (max-width: 64rem) {
+      .heroClean {
+        padding: var(--space-8) var(--space-6);
+      }
+
+      .sub {
+        max-width: 70%;
+      }
+    }
+
+    @media (max-width: 40rem) {
+      .heroClean {
+        padding: var(--space-7) var(--space-4);
+        gap: var(--space-4);
+      }
+
+      .sub {
+        max-width: 100%;
+      }
+
+      h2 {
+        --underline: 4px;
+      }
     }
   }
 </style>

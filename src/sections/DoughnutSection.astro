@@ -24,52 +24,54 @@ const { title, eyebrow, subtitle, stats } = data;
 </Section>
 
 <style>
-  .chartContainer {
-    display: flex;
-    width: 100%;
-    gap: 89px;
-    align-items: center;
-    margin-inline: auto;
-
-    animation: --switch linear both;
-    animation-timeline: view();
-    animation-range: 12.5% 25%;
-  }
-
-  .sectionHeader {
-    width: 375px;
-    align-self: flex-start;
-  }
-
-  .chart-grid {
-    flex: 1;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 2rem;
-  }
-
-  .sectionHeader :global(p:last-child) {
-    color: var(--color-text);
-  }
-
-  @media (max-width: 768px) {
+  @layer components {
     .chartContainer {
-      flex-direction: column;
-      gap: var(--space-9);
+      display: flex;
+      width: 100%;
+      gap: 89px;
+      align-items: center;
+      margin-inline: auto;
+
+      animation: --switch linear both;
+      animation-timeline: view();
+      animation-range: 12.5% 25%;
     }
 
-    .chartContainer > div:first-child {
-      flex: 0 0 auto;
+    .sectionHeader {
+      width: 375px;
+      align-self: flex-start;
     }
-  }
 
-  @keyframes --switch {
-    from {
-      --sentinel: 0;
+    .chart-grid {
+      flex: 1;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2rem;
     }
-    to {
-      --sentinel: 1;
+
+    .sectionHeader :global(p:last-child) {
+      color: var(--color-text);
+    }
+
+    @media (max-width: 768px) {
+      .chartContainer {
+        flex-direction: column;
+        gap: var(--space-9);
+      }
+
+      .chartContainer > div:first-child {
+        flex: 0 0 auto;
+      }
+    }
+
+    @keyframes --switch {
+      from {
+        --sentinel: 0;
+      }
+      to {
+        --sentinel: 1;
+      }
     }
   }
 </style>
