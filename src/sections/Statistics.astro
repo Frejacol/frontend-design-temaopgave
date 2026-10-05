@@ -21,35 +21,37 @@ const stats = [
 </div>
 
 <style>
-  div {
-    margin-top: var(--space-9);
-  }
-  .stats {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: var(--space-6);
-    text-align: center;
-
-    .number {
-      font-weight: var(--text-bold);
-      font-size: var(--text-size-xxxl);
-      color: var(--color-text);
+  @layer components {
+    div {
+      margin-top: var(--space-9);
+    }
+    .stats {
+      list-style: none;
+      padding: 0;
       margin: 0;
-    }
-
-    .label {
-      color: var(--color-text-muted);
-    }
-
-    @media (max-width: 600px) {
-      grid-template-columns: repeat(2, 1fr);
-      row-gap: var(--space-8);
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--space-6);
+      text-align: center;
 
       .number {
-        font-size: 2.25rem;
+        font-weight: var(--text-bold);
+        font-size: var(--text-size-xxxl);
+        color: var(--color-text);
+        margin: 0;
+      }
+
+      .label {
+        color: var(--color-text-muted);
+      }
+
+      @media (max-width: 600px) {
+        grid-template-columns: repeat(2, 1fr);
+        row-gap: var(--space-8);
+
+        .number {
+          font-size: 2.25rem;
+        }
       }
     }
   }

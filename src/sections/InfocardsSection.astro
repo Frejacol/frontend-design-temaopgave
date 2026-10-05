@@ -33,44 +33,46 @@ const { title, eyebrow, subtitle, values, button } = data;
 </Section>
 
 <style>
-  .grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-
-    a {
-      background-color: var(--color-surface-secondary);
-      border: none;
-      border-radius: var(--border-button);
-      cursor: pointer;
-      text-decoration: none;
-      color: var(--color-text);
-      place-self: end;
-      padding: 15px 34px;
-    }
-  }
-
-  .cards {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: var(--space-6);
-    margin-top: var(--space-8);
-    align-items: start;
-  }
-
-  @media (max-width: 600px) {
+  @layer components {
     .grid {
-      grid-template-columns: 1fr;
-      row-gap: var(--space-6);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
 
       a {
-        place-self: start;
+        background-color: var(--color-surface-secondary);
+        border: none;
+        border-radius: var(--border-button);
+        cursor: pointer;
+        text-decoration: none;
+        color: var(--color-text);
+        place-self: end;
+        padding: 15px 34px;
       }
     }
 
     .cards {
-      grid-template-columns: 1fr;
-      gap: var(--space-4);
-      margin-top: var(--space-6);
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--space-6);
+      margin-top: var(--space-8);
+      align-items: start;
+    }
+
+    @media (max-width: 600px) {
+      .grid {
+        grid-template-columns: 1fr;
+        row-gap: var(--space-6);
+
+        a {
+          place-self: start;
+        }
+      }
+
+      .cards {
+        grid-template-columns: 1fr;
+        gap: var(--space-4);
+        margin-top: var(--space-6);
+      }
     }
   }
 </style>

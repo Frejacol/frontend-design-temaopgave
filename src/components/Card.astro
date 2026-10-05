@@ -21,63 +21,65 @@ const { icon, title, description, link, linkText, variant, circleIcon } =
 </div>
 
 <style>
-  div {
-    border-radius: var(--border-card);
-    padding: 44px 35px;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: var(--space-3);
+  @layer components {
+    div {
+      border-radius: var(--border-card);
+      padding: 44px 35px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: var(--space-3);
 
-    img {
-      width: 20%;
-      height: auto;
-    }
-
-    p {
-      color: var(--color-text-muted);
-    }
-
-    &.grey {
-      background-color: var(--color-surface-tertiary);
-    }
-
-    &.light {
-      background-color: var(--color-surface-secondary);
-    }
-
-    &.white {
-      background-color: var(--color-surface-primary);
-    }
-
-    .icon.circle {
-      display: grid;
-      place-items: center;
-      width: 3rem;
-      aspect-ratio: 1;
-      border-radius: 50%;
-      background-color: var(--color-ui-primary);
-      color: var(--color-on-ui-primary);
-
-      :global(img),
-      :global(svg) {
-        width: 50%;
+      img {
+        width: 20%;
         height: auto;
       }
-    }
 
-    a {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5em;
-      color: var(--color-text);
-      text-decoration: none;
-      font-weight: var(--text-medium);
+      p {
+        color: var(--color-text-muted);
+      }
 
-      :global(.arrow) {
-        width: 1em;
-        height: 1em;
-        transition: translate 200ms ease-out;
+      &.grey {
+        background-color: var(--color-surface-tertiary);
+      }
+
+      &.light {
+        background-color: var(--color-surface-secondary);
+      }
+
+      &.white {
+        background-color: var(--color-surface-primary);
+      }
+
+      .icon.circle {
+        display: grid;
+        place-items: center;
+        width: 3rem;
+        aspect-ratio: 1;
+        border-radius: 50%;
+        background-color: var(--color-ui-primary);
+        color: var(--color-on-ui-primary);
+
+        :global(img),
+        :global(svg) {
+          width: 50%;
+          height: auto;
+        }
+      }
+
+      a {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5em;
+        color: var(--color-text);
+        text-decoration: none;
+        font-weight: var(--text-medium);
+
+        :global(.arrow) {
+          width: 1em;
+          height: 1em;
+          transition: translate 200ms ease-out;
+        }
       }
     }
   }

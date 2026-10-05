@@ -10,25 +10,27 @@ const { eyebrowText, title, subtitle } = Astro.props;
 </div>
 
 <style>
-  div {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-4);
+  @layer components {
+    div {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-4);
 
-    .eyebrow {
-      text-transform: uppercase;
-      font-weight: var(--text-xtra-light);
-      text-box: trim-both cap alphabetic;
-    }
+      .eyebrow {
+        text-transform: uppercase;
+        font-weight: var(--text-xtra-light);
+        text-box: trim-both cap alphabetic;
+      }
 
-    h2 {
-      font-weight: var(--text-bold);
-      text-transform: capitalize;
-    }
+      h2 {
+        font-weight: var(--text-bold);
+        text-transform: capitalize;
+      }
 
-    .sub {
-      font-weight: var(--text-xtra-light);
-      color: var(--color-text-muted);
+      .sub {
+        font-weight: var(--text-xtra-light);
+        color: var(--color-text-muted);
+      }
     }
   }
 </style>

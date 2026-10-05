@@ -29,52 +29,54 @@ const featured = team.slice(0, 2);
 </Section>
 
 <style>
-  .meetTeamContainer {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1.6fr);
-    gap: var(--space-8);
-    align-items: center;
-  }
-
-  .memberContainer {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-8);
-    width: 100%;
-  }
-
-  .memberContainer :global(.content) {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-4);
-    grid-column: 2;
-    grid-row: 1 / span 2;
-    align-self: center;
-  }
-
-  .intro {
-    display: flex;
-    align-self: flex-start;
-    flex-direction: column;
-    gap: var(--space-6);
-  }
-
-  .button {
-    align-self: flex-start;
-  }
-
-  .memberContainer :global(.socials) {
-    display: none;
-  }
-
-  @media (max-width: 50rem) {
+  @layer components {
     .meetTeamContainer {
-      grid-template-columns: minmax(0, 1fr);
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.6fr);
+      gap: var(--space-8);
+      align-items: center;
     }
 
     .memberContainer {
-      max-width: 20rem;
-      margin-inline: auto;
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-8);
+      width: 100%;
+    }
+
+    .memberContainer :global(.content) {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-4);
+      grid-column: 2;
+      grid-row: 1 / span 2;
+      align-self: center;
+    }
+
+    .intro {
+      display: flex;
+      align-self: flex-start;
+      flex-direction: column;
+      gap: var(--space-6);
+    }
+
+    .button {
+      align-self: flex-start;
+    }
+
+    .memberContainer :global(.socials) {
+      display: none;
+    }
+
+    @media (max-width: 50rem) {
+      .meetTeamContainer {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .memberContainer {
+        max-width: 20rem;
+        margin-inline: auto;
+      }
     }
   }
 </style>

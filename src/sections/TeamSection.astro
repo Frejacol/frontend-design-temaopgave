@@ -14,16 +14,18 @@ const data = await getTeamMembers();
 </Section>
 
 <style>
-  .MemberGrid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: var(--space-7);
-  }
-
-  @media (max-width: 40rem) {
+  @layer components {
     .MemberGrid {
       display: grid;
-      grid-template-columns: 1fr;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-7);
+    }
+
+    @media (max-width: 40rem) {
+      .MemberGrid {
+        display: grid;
+        grid-template-columns: 1fr;
+      }
     }
   }
 </style>

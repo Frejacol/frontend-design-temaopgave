@@ -18,110 +18,112 @@ const { figNumber } = Astro.props;
 </figure>
 
 <style>
-  @property --animatedNumber {
-    syntax: "<number>";
-    inherits: true;
-    initial-value: 0;
-  }
+  @layer components {
+    @property --animatedNumber {
+      syntax: "<number>";
+      inherits: true;
+      initial-value: 0;
+    }
 
-  figure {
-    --animatedNumber: calc(var(--value) * var(--sentinel, 1));
-    transition: --animatedNumber 1s ease;
-    flex: 0 0 200px;
-    min-inline-size: 0;
-    text-align: center;
-    container: stat / inline-size;
+    figure {
+      --animatedNumber: calc(var(--value) * var(--sentinel, 1));
+      transition: --animatedNumber 1s ease;
+      flex: 0 0 200px;
+      min-inline-size: 0;
+      text-align: center;
+      container: stat / inline-size;
 
-    /* --value: attr(data-value type(<number>));
+      /* --value: attr(data-value type(<number>));
     --value-string: attr(data-value);
     --value-percent: attr(data-value %); */
 
-    --total: calc(100 - var(--value));
-    display: grid;
-    grid: "stack";
-    place-items: center;
-    font-family: var(--font-cabin);
-  }
-
-  .value {
-    grid-area: stack;
-    font-size: var(--text-size-xxxl);
-    font-weight: 700;
-  }
-
-  svg {
-    rotate: -90deg;
-    grid-area: stack;
-    overflow: visible;
-    width: 100%;
-    height: auto;
-    aspect-ratio: 1;
-  }
-
-  .track {
-    stroke: #daae3c;
-  }
-
-  .track,
-  .progress {
-    --stroke-width: 3;
-    /* cx: 50; /* virker ikke i safari
-    cy: 50; virker ikke i safari */
-    r: 46;
-    fill: none;
-    stroke-width: var(--stroke-width);
-  }
-
-  .progress {
-    stroke: var(--color-surface-primary);
-    stroke-linecap: round;
-    stroke-dasharray: 100;
-    /* stroke-dashoffset: calc(100 - var(--value)); */
-    stroke-dashoffset: calc(100 - var(--animatedNumber));
-  }
-
-  .marker-group {
-    transform-box: view-box;
-    transform-origin: 50% 50%;
-    transform: rotate(calc(var(--animatedNumber) * 3.6deg));
-  }
-
-  .marker {
-    fill: black;
-    stroke: var(--color-surface-primary);
-    stroke-width: 3;
-  }
-
-  .value {
-    grid-area: stack;
-    font-size: var(--text-size-xxxl);
-    font-weight: 700;
-    font-variant-numeric: tabular-nums;
-    counter-reset: c calc(var(--animatedNumber));
-
-    &::after {
-      content: counter(c) "%";
-      content: counter(c) "%" / "";
+      --total: calc(100 - var(--value));
+      display: grid;
+      grid: "stack";
+      place-items: center;
+      font-family: var(--font-cabin);
     }
-  }
 
-  .sr-only {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    overflow: hidden;
-    clip-path: inset(50%);
-    white-space: nowrap;
-  }
+    .value {
+      grid-area: stack;
+      font-size: var(--text-size-xxxl);
+      font-weight: 700;
+    }
 
-  figcaption {
-    margin-block-start: 0.75rem;
-    font-size: var(--text-size-m);
-  }
+    svg {
+      rotate: -90deg;
+      grid-area: stack;
+      overflow: visible;
+      width: 100%;
+      height: auto;
+      aspect-ratio: 1;
+    }
 
-  @media (prefers-reduced-motion: reduce) {
-    figure {
-      transition: none;
+    .track {
+      stroke: #daae3c;
+    }
+
+    .track,
+    .progress {
+      --stroke-width: 3;
+      /* cx: 50; /* virker ikke i safari
+    cy: 50; virker ikke i safari */
+      r: 46;
+      fill: none;
+      stroke-width: var(--stroke-width);
+    }
+
+    .progress {
+      stroke: var(--color-surface-primary);
+      stroke-linecap: round;
+      stroke-dasharray: 100;
+      /* stroke-dashoffset: calc(100 - var(--value)); */
+      stroke-dashoffset: calc(100 - var(--animatedNumber));
+    }
+
+    .marker-group {
+      transform-box: view-box;
+      transform-origin: 50% 50%;
+      transform: rotate(calc(var(--animatedNumber) * 3.6deg));
+    }
+
+    .marker {
+      fill: black;
+      stroke: var(--color-surface-primary);
+      stroke-width: 3;
+    }
+
+    .value {
+      grid-area: stack;
+      font-size: var(--text-size-xxxl);
+      font-weight: 700;
+      font-variant-numeric: tabular-nums;
+      counter-reset: c calc(var(--animatedNumber));
+
+      &::after {
+        content: counter(c) "%";
+        content: counter(c) "%" / "";
+      }
+    }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      clip-path: inset(50%);
+      white-space: nowrap;
+    }
+
+    figcaption {
+      margin-block-start: 0.75rem;
+      font-size: var(--text-size-m);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      figure {
+        transition: none;
+      }
     }
   }
 </style>
