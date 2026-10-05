@@ -32,7 +32,10 @@ const { title, eyebrow, subtitle, stats } = data;
       align-items: center;
       margin-inline: auto;
 
-      animation: --switch linear both;
+      /* animation: switch linear both; */
+      animation-name: switch;
+      animation-timing-function: linear;
+      animation-fill-mode: both;
       animation-timeline: view();
       animation-range: 12.5% 25%;
     }
@@ -62,15 +65,6 @@ const { title, eyebrow, subtitle, stats } = data;
 
       .chartContainer > div:first-child {
         flex: 0 0 auto;
-      }
-    }
-
-    @keyframes --switch {
-      from {
-        --sentinel: 0;
-      }
-      to {
-        --sentinel: 1;
       }
     }
   }
