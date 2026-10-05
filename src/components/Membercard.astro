@@ -38,100 +38,102 @@ const { employer } = Astro.props;
 </div>
 
 <style>
-  .card-container {
-    container-type: inline-size;
-    width: 100%;
-  }
-
-  article {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: var(--space-4);
-  }
-
-  .media {
-    position: relative;
-    width: 100%;
-  }
-
-  .media img {
-    display: block;
-    width: 100%;
-    height: auto;
-    border-radius: var(--border-card);
-  }
-
-  .title--badge {
-    display: none;
-  }
-
-  .title--inline {
-    display: block;
-    font-weight: var(--text-medium);
-  }
-
-  .content {
-    padding: var(--space-4);
-    text-align: center;
-  }
-
-  .teamDescription {
-    color: var(--color-text-muted);
-  }
-
-  a {
-    text-decoration: none;
-    color: var(--color-text);
-  }
-
-  .socials {
-    display: flex;
-    gap: var(--space-4);
-    margin-bottom: var(--space-8);
-  }
-
-  @container (280px <= width < 480px) {
-    .title--badge {
-      display: block;
-      position: absolute;
-      right: 1.5ex;
-      bottom: 1.5ex;
-      padding: 0.5ex 1ex;
-      border-radius: 2rem;
-      background: var(--color-ui-primary);
-      color: var(--color-on-ui-primary);
+  @layer components {
+    .card-container {
+      container-type: inline-size;
+      width: 100%;
     }
 
-    .title--inline {
-      display: none;
-    }
-  }
-
-  @container (width >= 480px) {
     article {
-      display: grid;
-      grid-template-columns: 15rem minmax(0, 1fr);
+      display: flex;
+      flex-direction: column;
       align-items: center;
-      column-gap: var(--space-5);
-      row-gap: 0;
+      gap: var(--space-4);
     }
 
     .media {
-      grid-row: 1 / span 2;
+      position: relative;
+      width: 100%;
+    }
+
+    .media img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: var(--border-card);
+    }
+
+    .title--badge {
+      display: none;
+    }
+
+    .title--inline {
+      display: block;
+      font-weight: var(--text-medium);
     }
 
     .content {
-      padding: 0;
-      text-align: left;
-      align-self: end;
+      padding: var(--space-4);
+      text-align: center;
+    }
+
+    .teamDescription {
+      color: var(--color-text-muted);
+    }
+
+    a {
+      text-decoration: none;
+      color: var(--color-text);
     }
 
     .socials {
-      grid-column: 2;
-      margin-bottom: 0;
-      padding-top: var(--space-3);
-      align-self: start;
+      display: flex;
+      gap: var(--space-4);
+      margin-bottom: var(--space-8);
+    }
+
+    @container (280px <= width < 480px) {
+      .title--badge {
+        display: block;
+        position: absolute;
+        right: 1.5ex;
+        bottom: 1.5ex;
+        padding: 0.5ex 1ex;
+        border-radius: 2rem;
+        background: var(--color-ui-primary);
+        color: var(--color-on-ui-primary);
+      }
+
+      .title--inline {
+        display: none;
+      }
+    }
+
+    @container (width >= 480px) {
+      article {
+        display: grid;
+        grid-template-columns: 15rem minmax(0, 1fr);
+        align-items: center;
+        column-gap: var(--space-5);
+        row-gap: 0;
+      }
+
+      .media {
+        grid-row: 1 / span 2;
+      }
+
+      .content {
+        padding: 0;
+        text-align: left;
+        align-self: end;
+      }
+
+      .socials {
+        grid-column: 2;
+        margin-bottom: 0;
+        padding-top: var(--space-3);
+        align-self: start;
+      }
     }
   }
 </style>
